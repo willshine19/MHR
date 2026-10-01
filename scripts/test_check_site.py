@@ -14,7 +14,7 @@ def page(nav_prefix, body):
 <title>测试</title>
 </head>
 <body>
-<nav class="site-nav"><a href="{nav_prefix}index.html">首页</a><a href="{nav_prefix}builds/index.html">配装</a><a href="{nav_prefix}about.html">关于</a></nav>
+<nav class="site-nav"><a href="{nav_prefix}index.html">首页</a><a href="{nav_prefix}builds/index.html">配装</a><a href="{nav_prefix}monsters/index.html">怪物</a><a href="{nav_prefix}about.html">关于</a></nav>
 {body}
 </body>
 </html>
@@ -35,6 +35,8 @@ class CheckSiteTest(unittest.TestCase):
         self.write("about.html", page("", "<p>关于</p>"))
         self.write("builds/index.html", page("../", '<a href="lance-mr2.html">长枪 MR 2★</a>'))
         self.write("builds/lance-mr2.html", page("../", CONTENT_BODY))
+        (self.site / "monsters").mkdir()
+        self.write("monsters/index.html", page("../", "<h1>怪物</h1>"))
 
     def tearDown(self):
         self.tmp.cleanup()
