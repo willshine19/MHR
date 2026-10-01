@@ -11,9 +11,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### 目录与约定
 
 - `site/` 是要发布的全部内容；`docs/specs/`、`docs/plans/` 放设计和计划；`scripts/` 放检查脚本。
-- 配装页是 `site/builds/<武器>-mr<N>.html`（如 `lance-mr3.html`、`bow-mr3.html`），每种武器每个进度一页；`site/builds/index.html` 是配装列表，导航的「配装」指向它。以后需要时再加 `site/monsters/<英文 slug>.html`（怪物笔记）。
+- 配装页是 `site/builds/<武器>-mr<N>.html`（如 `lance-mr3.html`、`bow-mr3.html`），每种武器每个进度一页；`site/builds/index.html` 是配装列表，导航的「配装」指向它。怪物页是 `site/monsters/<英文 slug>.html`（slug 取 Kiranico 英文名，如 `goss-harag.html`），一只一页；`site/monsters/index.html` 是怪物列表，按进度分组。
 - 文件名用英文小写 kebab-case；页面内容用简中官方译名。
-- 每页顶部都有相同的手写导航（首页 / 配装 / 关于）。导航改动时，所有页面和 `scripts/check_site.py` 的 `NAV_TARGETS` 要一起改。
+- 每页顶部都有相同的手写导航（首页 / 配装 / 怪物 / 关于）。导航改动时，所有页面和 `scripts/check_site.py` 的 `NAV_TARGETS` 要一起改。
 - 内容页（`site/` 子目录下除 `index.html` 以外的页面）标题下必须有 `<p class="page-meta">`（进度 · Ver.16.0.2 · YYYY-MM-DD 核对），底部必须有 `<section class="sources">` 资料来源。
 - 新增或更新内容页后，同步更新首页的「当前进度」「当前配装」「全部页面」和 `site/builds/index.html`。
 - 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住。
@@ -85,6 +85,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 弓的蓄力段和瓶：灰色（`text-gray-400`）表示不可用或要「解放弓的蓄力阶段」才能用，绿色表示强化。
 - 锋利度是 SVG 色块，宽度 ×5 就是锋利度数值；第一条是基础值，第二条是匠 Lv5。
 - 武器的解锁进度（Unlock at）和派生关系 Kiranico 上没有，查 MHRice 的武器页。
+- 怪物肉质表的列依次是 斩、打、弹、火、水、**冰、雷**、龙、昏厥（冰在雷前面，容易读错）。「State」列只取 0（常态），另一组值代表什么状态 Kiranico 和 MHRice 都没说明。部分部位名是日文内部名（如怨虎龙的「J：腕鬼火」），要换算成中文或不列。
+- 怪物英文页（`/data/monsters/<id>`，不带 `/zh`）底部的招式表有 `GuardableType`：0 可防御，1 需要防御强化，2 防御强化也挡不住（与 MHRice 的 Yes / Needs Guard Up / No 一致）。长枪能不能挡以这列为准；同一页可能混有原种或怪异化个体的条目，威力为 0 的判定不算。
+- 任务列表里每个任务占 3 行（`rowspan="3"`），怪物图标 `icons/emXXX_YY.png` 包括目标和可能出现的其他大型怪物；em 编号和 MHRice 怪物页编号相同。
 
 ## 各类内容的信息源优先级
 
