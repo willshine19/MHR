@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-《怪物猎人 崛起》（Monster Hunter Rise）+ 大型 DLC《曙光》（Sunbreak）的游戏攻略站，平台为 **Nintendo Switch 版**。内容以静态 HTML 呈现，发布到 GitHub Pages。
+《怪物猎人 崛起》（Monster Hunter Rise）+ 大型 DLC《曙光》（Sunbreak）的游戏攻略站，平台为 **Nintendo Switch 版**。内容以静态 HTML 呈现，同时发布到 GitHub Pages 和 Cloudflare（https://mhr.willshine19.workers.dev）。
 
 这是给用户本人看的**定制攻略**：长枪为主，也用弓，内容打到哪写到哪。当前进度写在 `site/index.html` 的「当前进度」里，推荐装备前先确认进度，只用当前进度能拿到的素材。
 
 ### 目录与约定
 
-- `site/` 是发布到 Pages 的全部内容；`docs/specs/`、`docs/plans/` 放设计和计划；`scripts/` 放检查脚本。
+- `site/` 是要发布的全部内容；`docs/specs/`、`docs/plans/` 放设计和计划；`scripts/` 放检查脚本。
 - 配装页是 `site/builds/<武器>-mr<N>.html`（如 `lance-mr3.html`、`bow-mr3.html`），每种武器每个进度一页；`site/builds/index.html` 是配装列表，导航的「配装」指向它。以后需要时再加 `site/monsters/<英文 slug>.html`（怪物笔记）。
 - 文件名用英文小写 kebab-case；页面内容用简中官方译名。
 - 每页顶部都有相同的手写导航（首页 / 配装 / 关于）。导航改动时，所有页面和 `scripts/check_site.py` 的 `NAV_TARGETS` 要一起改。
@@ -99,7 +99,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 攻略性内容不是拆包数据，要逐篇看日期：优先采用 2023-06-08（Ver.16）之后发布或更新的文章，最低也要在 2022-06-30 之后。
 - 从外文或社区资料转写时，里面的数值必须回到 Kiranico 或 MHRice 核对，名称必须换成简中官方译名。
 
-## 发布（GitHub Pages）
+## 发布（GitHub Pages + Cloudflare）
 
-- 推送到 `main` 后，`.github/workflows/pages.yml` 会先跑检查脚本的测试和 `check_site.py`，然后只把 `site/` 目录部署到 Pages。需要在 GitHub 仓库的 Pages 设置里把来源设为「GitHub Actions」。用 Actions 部署不会经过 Jekyll，不需要 `.nojekyll`。
-- 站内链接和资源一律用**相对路径**：项目型 Pages 部署在 `/<仓库名>/` 子路径下，以 `/` 开头的绝对路径上线后会 404（检查脚本会拦下来）。
+- 推送到 `main` 后，`.github/workflows/deploy.yml` 会先跑检查脚本的测试和 `check_site.py`，通过后再把 `site/` 目录同时部署到两边：
+  - GitHub Pages：需要在 GitHub 仓库的 Pages 设置里把来源设为「GitHub Actions」。用 Actions 部署不会经过 Jekyll，不需要 `.nojekyll`。
+  - Cloudflare Workers 静态资源：Worker 名 `mhr`，地址 https://mhr.willshine19.workers.dev。配置在 `wrangler.jsonc`，CI 用仓库 secret `CLOUDFLARE_API_TOKEN`（权限模板「Edit Cloudflare Workers」）。
+- 不要在本地工作区直接运行 `wrangler deploy`，工作区里可能有还没检查过的改动；需要手动部署时，先用 `git archive` 导出已提交的版本再部署。
+- 站内链接和资源一律用**相对路径**：项目型 Pages 部署在 `/<仓库名>/` 子路径下，以 `/` 开头的绝对路径上线后会 404（检查脚本会拦下来）。Cloudflare 部署在根路径，会把 `xxx.html` 跳转到不带后缀的 `xxx`，相对路径在两边都能用。
