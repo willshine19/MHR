@@ -6,16 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 《怪物猎人 崛起》（Monster Hunter Rise）+ 大型 DLC《曙光》（Sunbreak）的游戏攻略站，平台为 **Nintendo Switch 版**。内容以静态 HTML 呈现，发布到 GitHub Pages。
 
-这是给用户本人看的**定制攻略**：主武器长枪，内容打到哪写到哪。当前进度写在 `site/index.html` 的「当前进度」里，推荐装备前先确认进度，只用当前进度能拿到的素材。
+这是给用户本人看的**定制攻略**：长枪为主，也用弓，内容打到哪写到哪。当前进度写在 `site/index.html` 的「当前进度」里，推荐装备前先确认进度，只用当前进度能拿到的素材。
 
 ### 目录与约定
 
 - `site/` 是发布到 Pages 的全部内容；`docs/specs/`、`docs/plans/` 放设计和计划；`scripts/` 放检查脚本。
-- 配装页是 `site/builds/mr<N>.html`，每个进度一页。以后需要时再加 `site/lance/`（长枪操作、招式）和 `site/monsters/<英文 slug>.html`（长枪视角的怪物笔记）。
+- 配装页是 `site/builds/<武器>-mr<N>.html`（如 `lance-mr3.html`、`bow-mr3.html`），每种武器每个进度一页；`site/builds/index.html` 是配装列表，导航的「配装」指向它。以后需要时再加 `site/monsters/<英文 slug>.html`（怪物笔记）。
 - 文件名用英文小写 kebab-case；页面内容用简中官方译名。
 - 每页顶部都有相同的手写导航（首页 / 配装 / 关于）。导航改动时，所有页面和 `scripts/check_site.py` 的 `NAV_TARGETS` 要一起改。
-- 内容页（`site/` 子目录下的页面）标题下必须有 `<p class="page-meta">`（进度 · Ver.16.0.2 · YYYY-MM-DD 核对），底部必须有 `<section class="sources">` 资料来源。
-- 新增或更新内容页后，同步更新首页的「当前配装」和「全部页面」。
+- 内容页（`site/` 子目录下除 `index.html` 以外的页面）标题下必须有 `<p class="page-meta">`（进度 · Ver.16.0.2 · YYYY-MM-DD 核对），底部必须有 `<section class="sources">` 资料来源。
+- 新增或更新内容页后，同步更新首页的「当前进度」「当前配装」「全部页面」和 `site/builds/index.html`。
 - 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住。
 
 ### 命令
@@ -77,6 +77,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | [巴哈姆特哈啦板](https://forum.gamer.com.tw/B.php?bsn=5786) | 论坛讨论 | ❌ 繁中 | ✅ | 只作为玩家讨论参考 |
 
 **不作为来源**：monsterhunterwiki.org、アルテマ、NGA 用 curl 和 WebFetch 访问都会 403；Fandom 连接被拒；Gamekee 是 SPA，curl 拿不到正文；工具都读不到，无法核实。篝火营地的内容集中在 2022-07 及更早，神ゲー攻略首页没看到 TU5 之后的内容，版本都偏旧。B 站没有 MHR 的 wiki。用户直接提供这些站的原文时，可以按版本规则判断后参考。
+
+### 从 Kiranico 取数据的坑
+
+- 武器列表的插槽单元格里同时有普通插槽和百龙插槽，要按 `<small>插槽</small>` 和 `<small>百龙插槽</small>` 分开解析。百龙插槽只能插百龙装饰品，不能算进普通孔（曾经把它当普通孔写错过）。
+- 武器详情页的「生产素材」和「强化素材」是两张表，没有生产素材的武器只能从上一级强化而来。
+- 弓的蓄力段和瓶：灰色（`text-gray-400`）表示不可用或要「解放弓的蓄力阶段」才能用，绿色表示强化。
+- 锋利度是 SVG 色块，宽度 ×5 就是锋利度数值；第一条是基础值，第二条是匠 Lv5。
+- 武器的解锁进度（Unlock at）和派生关系 Kiranico 上没有，查 MHRice 的武器页。
 
 ## 各类内容的信息源优先级
 

@@ -23,7 +23,7 @@ FORBIDDEN_TERMS = {
     "怪異調查": "这是繁中字形，简中官方译名是「怪异探究任务」",
     "加工屋": "简中官方译名是「加工店」",
 }
-NAV_TARGETS = ["index.html", "builds/mr2.html", "about.html"]
+NAV_TARGETS = ["index.html", "builds/index.html", "about.html"]
 META_VERSION = "Ver.16.0.2"
 META_DATE = re.compile(r"\d{4}-\d{2}-\d{2} 核对")
 WRONG_TERM = re.compile(r'<del class="wrong-term">.*?</del>', re.S)
@@ -150,7 +150,8 @@ def check_site(site):
             err(f"导航链接应依次指向 {NAV_TARGETS}")
         for url in p.links:
             check_link(url, page, site, parsed, err)
-        if page.parent != site:
+        # 子目录里的页面是内容页；子目录的 index.html 是列表页，不受内容页规则约束
+        if page.parent != site and page.name != "index.html":
             if META_VERSION not in p.meta_text or not META_DATE.search(p.meta_text):
                 err(f'内容页的 <p class="page-meta"> 需包含「{META_VERSION}」和「YYYY-MM-DD 核对」')
             if not any(u.startswith("https://") for u in p.source_links):
