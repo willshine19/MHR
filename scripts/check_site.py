@@ -25,7 +25,7 @@ FORBIDDEN_TERMS = {
     "怪異調查": "这是繁中字形，简中官方译名是「怪异探究任务」",
     "加工屋": "简中官方译名是「加工店」",
 }
-NAV_TARGETS = ["index.html", "builds/index.html", "about.html"]
+NAV_TARGETS = ["index.html", "builds/index.html", "monsters/index.html", "about.html"]
 META_VERSION = "Ver.16.0.2"
 META_DATE = re.compile(r"\d{4}-\d{2}-\d{2} 核对")
 WRONG_TERM = re.compile(r'<del class="wrong-term">.*?</del>', re.S)
