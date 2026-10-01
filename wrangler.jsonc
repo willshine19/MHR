@@ -1,0 +1,10 @@
+// Cloudflare Workers 静态资源部署：只上传 site/，没有 Worker 脚本。
+// CI 由 .github/workflows/deploy.yml 在推送 main 后执行 wrangler deploy。
+{
+  "name": "mhr",
+  "account_id": "614bc4d343df9a0fb75658e97e16387c",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./site"
+  }
+}
