@@ -14,7 +14,7 @@ def page(nav_prefix, body):
 <title>测试</title>
 </head>
 <body>
-<nav class="site-nav"><a href="{nav_prefix}index.html">首页</a><a href="{nav_prefix}builds/mr2.html">配装</a><a href="{nav_prefix}about.html">关于</a></nav>
+<nav class="site-nav"><a href="{nav_prefix}index.html">首页</a><a href="{nav_prefix}builds/index.html">配装</a><a href="{nav_prefix}about.html">关于</a></nav>
 {body}
 </body>
 </html>
@@ -31,9 +31,10 @@ class CheckSiteTest(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.site = Path(self.tmp.name).resolve()
         (self.site / "builds").mkdir()
-        self.write("index.html", page("", '<a href="builds/mr2.html#top">配装</a>'))
+        self.write("index.html", page("", '<a href="builds/lance-mr2.html#top">配装</a>'))
         self.write("about.html", page("", "<p>关于</p>"))
-        self.write("builds/mr2.html", page("../", CONTENT_BODY))
+        self.write("builds/index.html", page("../", '<a href="lance-mr2.html">长枪 MR 2★</a>'))
+        self.write("builds/lance-mr2.html", page("../", CONTENT_BODY))
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -49,7 +50,7 @@ class CheckSiteTest(unittest.TestCase):
         self.assertEqual(check_site(self.site), [])
 
     def test_root_absolute_path_rejected(self):
-        self.write("about.html", page("", '<a href="/builds/mr2.html">配装</a>'))
+        self.write("about.html", page("", '<a href="/builds/lance-mr2.html">配装</a>'))
         self.assertError("以 / 开头")
 
     def test_missing_target_rejected(self):
@@ -57,7 +58,7 @@ class CheckSiteTest(unittest.TestCase):
         self.assertError("目标不存在")
 
     def test_missing_anchor_rejected(self):
-        self.write("about.html", page("", '<a href="builds/mr2.html#nope">锚点</a>'))
+        self.write("about.html", page("", '<a href="builds/lance-mr2.html#nope">锚点</a>'))
         self.assertError("锚点不存在")
 
     def test_http_link_rejected(self):
@@ -77,16 +78,20 @@ class CheckSiteTest(unittest.TestCase):
         self.write("about.html", page("", '<p>写「怪异炼化」，不写<del class="wrong-term">傀异炼成</del></p>'))
         self.assertEqual(check_site(self.site), [])
 
+    def test_section_index_is_not_content_page(self):
+        self.write("builds/index.html", page("../", "<h1>配装</h1>"))
+        self.assertEqual(check_site(self.site), [])
+
     def test_content_page_requires_meta(self):
-        self.write("builds/mr2.html", page("../", CONTENT_BODY.replace("2026-09-30 核对", "")))
+        self.write("builds/lance-mr2.html", page("../", CONTENT_BODY.replace("2026-09-30 核对", "")))
         self.assertError("page-meta")
 
     def test_content_page_requires_sources(self):
-        self.write("builds/mr2.html", page("../", CONTENT_BODY.replace("https://mhrise.kiranico.com/zh", "#top")))
+        self.write("builds/lance-mr2.html", page("../", CONTENT_BODY.replace("https://mhrise.kiranico.com/zh", "#top")))
         self.assertError("资料来源")
 
     def test_nav_must_match(self):
-        self.write("about.html", page("", "").replace('builds/mr2.html">配装', 'about.html">配装'))
+        self.write("about.html", page("", "").replace('builds/index.html">配装', 'about.html">配装'))
         self.assertError("导航")
 
     def test_lang_required(self):
