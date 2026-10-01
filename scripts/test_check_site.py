@@ -68,6 +68,11 @@ class CheckSiteTest(unittest.TestCase):
         self.write("about.html", page("", "<p>傀异炼成</p>"))
         self.assertError("非官方译名「傀异」")
 
+    def test_forbidden_term_traditional_glyphs_rejected(self):
+        self.write("about.html", page("", "<p>傀異鍊成、怪異調查</p>"))
+        self.assertError("非官方译名「傀異」")
+        self.assertError("非官方译名「怪異調查」")
+
     def test_wrong_term_example_allowed(self):
         self.write("about.html", page("", '<p>写「怪异炼化」，不写<del class="wrong-term">傀异炼成</del></p>'))
         self.assertEqual(check_site(self.site), [])
