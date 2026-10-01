@@ -17,6 +17,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 内容页（`site/` 子目录下除 `index.html` 以外的页面）标题下必须有 `<p class="page-meta">`（进度 · Ver.16.0.2 · YYYY-MM-DD 核对），底部必须有 `<section class="sources">` 资料来源。
 - 新增或更新内容页后，同步更新首页的「当前进度」「当前配装」「全部页面」和 `site/builds/index.html`。
 - 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住。
+- 内容页在第一个 `<h2>` 前放 `<details class="toc">` 本页目录，依次链接到页面上的全部 h2（每个 h2 都要有语义 id，条目用短标题），`</main>` 前放 `<a class="to-top" href="#top">` 回到顶部。照抄现有配装页的写法。
+- 离线缓存（PWA）：每页 `<head>` 在样式表后面都有同样的几行（theme-color、manifest、icon、apple-touch-icon、`sw-register.js`），新页面照抄同目录页面的 `<head>`。`site/` 下增删任何文件，都要同步改 `site/sw.js` 的 `PRECACHE`，否则新页面离线时打不开。
+- 页面改名或删除时，在 `site/_redirects` 里加一行「旧地址 新地址 301」（只对 Cloudflare 生效）。
+- 以上几条和导航一样都由 `check_site.py` 检查，报错信息会写明缺什么。
 
 ### 命令
 
@@ -105,4 +109,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - GitHub Pages：需要在 GitHub 仓库的 Pages 设置里把来源设为「GitHub Actions」。用 Actions 部署不会经过 Jekyll，不需要 `.nojekyll`。
   - Cloudflare Workers 静态资源：Worker 名 `mhr`，地址 https://mhr.willshine19.workers.dev。配置在 `wrangler.jsonc`，CI 用仓库 secret `CLOUDFLARE_API_TOKEN`（权限模板「Edit Cloudflare Workers」）。
 - 不要在本地工作区直接运行 `wrangler deploy`，工作区里可能有还没检查过的改动；需要手动部署时，先用 `git archive` 导出已提交的版本再部署。
-- 站内链接和资源一律用**相对路径**：项目型 Pages 部署在 `/<仓库名>/` 子路径下，以 `/` 开头的绝对路径上线后会 404（检查脚本会拦下来）。Cloudflare 部署在根路径，会把 `xxx.html` 跳转到不带后缀的 `xxx`，相对路径在两边都能用。
+- 站内链接和资源一律用**相对路径**：项目型 Pages 部署在 `/<仓库名>/` 子路径下，以 `/` 开头的绝对路径上线后会 404（检查脚本会拦下来）。Cloudflare 部署在根路径，相对路径在两边都能用。
+- Cloudflare 的 `html_handling` 设为 `none`：`xxx.html` 按原地址返回，不跳到不带后缀的地址，和 Pages、本地预览一致；根目录 `/` 由 `site/_redirects` 补上。找不到的地址两边都返回 `site/404.html`，它会出现在任意路径下，所以开头用一段脚本把 `<base>` 设到站点根目录。

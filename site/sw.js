@@ -1,0 +1,84 @@
+// 离线缓存。安装时把全站文件存进缓存；之后每次请求都先走网络，并用结果更新缓存，
+// 网络 3 秒内没有响应或断网时改用缓存，所以联网时看到的总是最新内容。
+//
+// site/ 下增删文件后要同步改 PRECACHE（路径相对站点根目录），check_site.py 会检查两边是否一致。
+// 本文件内容一变，浏览器就会装上新版本，不需要手动改缓存名。
+
+const CACHE = "mhr";
+const NETWORK_TIMEOUT_MS = 3000;
+
+const PRECACHE = [
+  "index.html",
+  "about.html",
+  "404.html",
+  "builds/index.html",
+  "builds/lance-mr2.html",
+  "builds/lance-mr3.html",
+  "builds/bow-mr3.html",
+  "assets/css/site.css",
+  "assets/js/sw-register.js",
+  "assets/icons/apple-touch-icon.png",
+  "assets/icons/icon-192.png",
+  "assets/icons/icon-512.png",
+  "assets/icons/icon-maskable-512.png",
+  "manifest.webmanifest",
+];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then((cache) => cache.addAll(PRECACHE.map((path) => new Request(path, { cache: "reload" }))))
+      .then(() => self.skipWaiting()),
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
+  event.respondWith(networkFirst(event));
+});
+
+async function networkFirst(event) {
+  const request = event.request;
+  const cache = await caches.open(CACHE);
+  const network = fetch(request);
+  // 即使先用缓存应答了，网络请求也会在后台跑完，把缓存更新到最新
+  event.waitUntil(network.then(async (response) => {
+    if (response.ok) await cache.put(request, response.clone());
+  }).catch(() => {}));
+
+  try {
+    return await withTimeout(network, NETWORK_TIMEOUT_MS);
+  } catch {
+    const cached = await matchCache(cache, request);
+    if (cached) return cached;
+    if (request.mode === "navigate") {
+      const notFound = await cache.match("404.html");
+      if (notFound) return notFound;
+    }
+    return network; // 缓存里也没有：继续等网络，失败就照常报错
+  }
+}
+
+// 以 / 结尾的地址（例如站点根目录）对应目录下的 index.html
+async function matchCache(cache, request) {
+  const cached = await cache.match(request, { ignoreSearch: true });
+  if (cached) return cached;
+  const url = new URL(request.url);
+  if (url.pathname.endsWith("/")) return cache.match(new URL("index.html", url));
+  return undefined;
+}
+
+function withTimeout(promise, ms) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("timeout")), ms);
+    promise.then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}

@@ -1,0 +1,9 @@
+# Cloudflare 的跳转规则（GitHub Pages 不认这个文件）。格式：来源 目标 [状态码]
+# 页面改名或删除后，在这里把旧地址指到新地址，check_site.py 会检查目标存在。
+
+# html_handling 设为 none 后，目录地址不再自动对应 index.html，这里补上（200 = 原地返回目标内容）
+/ /index.html 200
+/:dir/ /:dir/index.html 200
+
+# 已改名的页面
+/builds/mr2.html /builds/lance-mr2.html 301

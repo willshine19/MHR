@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // 404 页会出现在任意路径下，先把 <base> 设到站点根目录，下面的相对链接才指得对：
+  // GitHub Pages 是 /<仓库名>/，Cloudflare 是 /
+  (function () {
+    var repo = location.pathname.split("/")[1];
+    var base = document.createElement("base");
+    base.href = location.hostname.endsWith(".github.io") && repo ? "/" + repo + "/" : "/";
+    document.head.appendChild(base);
+  })();
+</script>
+<title>页面不存在 · 曙光攻略</title>
+<link rel="stylesheet" href="assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<script src="assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="builds/index.html">配装</a>
+      <a href="about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>页面不存在</h1>
+  <p class="lead">这个地址没有对应的页面，可能已经改名或删除了。</p>
+  <p>从<a href="index.html">首页</a>的「全部页面」或<a href="builds/index.html">配装列表</a>重新找一下。</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>
