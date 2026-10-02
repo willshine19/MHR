@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>冰狼龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>冰狼龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>四脚高速冲刺，战斗中分阶段给身体披冰，后期用后腿站起连续抓击。有伤害的招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">有着深蓝色甲壳的牙龙。人称“冰狼龙”。长有一种器官可冷却吸入体内的空气，并让冷却后的空气循环至全身，以此特殊的方式来调节体温。它既可迁徙至很远的地方，也能适应环境的变化，所以栖息范围非常广。一般情况下用四脚行走，但停止冷却后体内温度会急剧上升，导致其肌肉胀大，变为适合双脚行走的体型。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>有伤害的招式都能普通防御，不需要防御强化（拆包数据）。威力最高的是后空翻后的前扑交叉斩，防住会后退很多。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>45</strong></td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">本体</td><td>30</td><td>10</td></tr>
+        <tr><td class="nowrap">前肢</td><td>35</td><td>15</td></tr>
+        <tr><td class="nowrap">后肢</td><td>30</td><td>20</td></tr>
+        <tr><td class="nowrap">尾巴</td><td>30</td><td>25</td></tr>
+        <tr><td class="nowrap">腹部</td><td>35</td><td>15</td></tr>
+        <tr><td class="nowrap">背部</td><td>25</td><td>15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>火 20、雷 10、龙 10、水 0、冰 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">四脚着地，身上没冰</td><td data-label="变化">—</td><td data-label="长枪">站斜前方打头</td><td data-label="弓">打头部</td></tr>
+        <tr><td data-label="状态">披冰</td><td data-label="怎么判断">喷冷气后四肢、尾巴结冰</td><td data-label="变化">头部斩 50、弹 50，后肢斩 40、弹 40，都比平常软；带冰的招开始附冰属性的属性异常</td><td data-label="长枪">打头部和后肢，累计伤害打碎冰</td><td data-label="弓">打头部、后肢</td></tr>
+        <tr><td data-label="状态">发怒（披冰时）</td><td data-label="怎么判断">咆哮，冰爪和背刺变大</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.05，持续 120 秒；多用后腿站起的前肢招式（连续乱抓、砸地、后空翻前扑）；头部斩 60、弹 55，前肢和腹部斩 45</td><td data-label="长枪">头部、前肢、腹部都能打；乱抓和前扑举盾防</td><td data-label="弓">打头部，离开正面</td></tr>
+        <tr><td data-label="状态">冰被打碎</td><td data-label="怎么判断">冰碎裂，长时间倒地</td><td data-label="变化">大输出机会</td><td data-label="长枪">打头部</td><td data-label="弓">打头部</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 60 秒；冲刺后会摔倒</td><td data-label="长枪">在冲刺终点等它摔倒再打</td><td data-label="弓">同左</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>冰是分几个阶段逐步加厚的；第二、三组肉质分别对应披冰时和披冰时发怒（GameWith、攻略レシピ的肉质表标注）。</li>
+  </ul>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>后空翻后前扑、双爪交叉斩下：伤害高、追踪强。看到后空翻就要准备；落地后硬直很长，是输出机会。</li>
+    <li>咆哮后边逼近边左右连续乱抓（双足站立、爪上有冰时）：横向范围宽、伤害高。近身时横闪或翻滚绕到它身后，离得远就直接后撤。</li>
+    <li>吸气蓄力后向前方扇形吐冷气，中了会有冰属性的属性异常。横向移开，从侧面接近；吐息时和吐完都是大破绽。</li>
+    <li>前肢砸地，掀起一道直线岩浪，横向闪开。</li>
+    <li>进入下一阶段时身体喷冷气披冰，近身有伤害判定，往后撤开。</li>
+    <li>四足高速冲刺、飞扑：一跟丢它就容易被画面外冲过来的招打中，要一直把它放在视野里。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>站斜前方或侧面打头，不要站正面；头部一直是斩肉质最软的部位。</li>
+    <li>后空翻前扑、连续乱抓、肩撞、前肢砸地都能防，但威力高，防住会后退较多。</li>
+    <li>反击时机：冷气吐息时从侧面打头；后空翻前扑落地后；冰被打碎倒地时。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>打头部；披冰时后肢的弹肉质也会升到 40。</li>
+    <li>站斜前方，别正对它；冲刺和后空翻前扑能一下拉近距离，始终让它留在视野里。</li>
+    <li>爆破瓶效果最好，其他异常状态效果一般。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>冰属性的属性异常：翔虫恢复变慢，用打消果实解除；提高冰耐性会更安全。</li>
+    <li>打碎冰：累计伤害够了，冰会碎掉，同时长时间倒地；GameWith 说不用专打带冰的部位。</li>
+    <li>可破坏头部（两段）、左右前肢、尾巴；尾巴不能切断。</li>
+    <li>闪光球、落穴陷阱、麻痹陷阱有效，音爆弹无效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>城塞高地的护卫（城塞高地）</li>
+    <li>沉睡于古城的王者（城塞高地）</li>
+    <li>无神神社的雷狼龙（废神社）</li>
+    <li>受女士欢迎的白骑士与铠武者（冰封群岛）</li>
+    <li>双雷照夜（密林）</li>
+    <li>碎尸万段，碾为微尘（城塞高地）</li>
+    <li>城塞高地的恶灵传闻！？（城塞高地）</li>
+    <li>我要毛茸茸，现在就要！（冰封群岛）</li>
+    <li>冰狼，不回首望月（城塞高地）</li>
+    <li>“无法逃脱酷寒”之卷（冰封群岛）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/311529">GameWith：冰狼龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/417777">Game8 JP：冰狼龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/351970">Game8：Lunagaron（2026-06-17 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%AB%E3%83%8A%E3%82%AC%E3%83%AD%E3%83%B3">モンハン大辞典 Wiki：ルナガロン（2026-10-01 更新）</a></li>
+      <li><a href="https://mhrise.com/data/4531.html">攻略レシピ：ルナガロン（披冰时的肉质）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/133_00.html">MHRice：冰狼龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/232963023">Kiranico：冰狼龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

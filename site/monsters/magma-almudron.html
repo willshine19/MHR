@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>熔翁龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>熔翁龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>泥翁龙的熔岩版：钻地后头和四肢发红变软，发怒后尾巴挂上大岩球，砸岩球的大招会炸两次。</strong></p>
+  </div>
+  <p class="lead">栖息在熔岩洞，与通常种不同，能使用熔岩，由此得名“熔翁龙”。体内会分泌能够溶解地表的特殊溶解液，可以自由自在地潜入地下，制造熔岩或岩石。因极强的攻击性而著名，有报告称如有猎物踏入其栖息地，它就会变得极为狂暴，毫不留情地攻击对方。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>拆包数据里只有一个需要防御强化的判定：挂着大岩球时大招里的岩球爆炸（威力 80）。各攻略站对这招要不要防御强化说法不一，最稳的是看到大招蓄势就跑远。其他攻击都能普通防御。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>55</strong></td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">背部</td><td>25</td><td>20</td></tr>
+        <tr><td class="nowrap">腹部</td><td>40</td><td>25</td></tr>
+        <tr><td class="nowrap">前肢</td><td>40</td><td>40</td></tr>
+        <tr><td class="nowrap">后肢</td><td>21</td><td>20</td></tr>
+        <tr><td class="nowrap">尾巴根</td><td>24</td><td>15</td></tr>
+        <tr><td class="nowrap">尾巴尖</td><td>50</td><td>25</td></tr>
+        <tr><td class="nowrap">大泥球</td><td>25</td><td>20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>水 25、冰 20、雷 15、龙 15、火 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 120（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">尾巴尖没有岩球，身上不发红</td><td data-label="变化">尾巴攻击够得远、预兆不明显</td><td data-label="长枪">砍头部（斩 55）</td><td data-label="弓">射头部（弹 45）</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">吼叫后原地转圈，在尾巴尖做出大岩球</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.1，持续 140 秒；出现砸岩球的大招，会炸两次；头部斩 60、尾巴尖斩 55，稍微变软</td><td data-label="长枪">继续砍头部或尾巴尖；大招蓄势时跑远</td><td data-label="弓">仍然射头部；大岩球不是弱点（弹 20）</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 80 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">头和四肢发红</td><td data-label="怎么判断">钻地出来或做岩球时，头和四肢发红</td><td data-label="变化">明显变软：头部斩 80、弹 50，前肢斩 70、弹 60，后肢斩 70、弹 45；一段时间后消退</td><td data-label="长枪">集中砍发红的头部和前肢</td><td data-label="弓">射发红的前肢，其次头部</td></tr>
+        <tr><td data-label="状态">半潜</td><td data-label="怎么判断">下半身埋在地里，只露出上半身和尾巴</td><td data-label="变化">原地打转后甩尾，放出三道熔岩；常接在连续钻地、造出一圈会爆炸的岩块之后</td><td data-label="长枪">贴身时三道熔岩之间没缝，往侧面闪或退开；尾巴攻击能防</td><td data-label="弓">中距离从缝里穿过；远离岩块</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>大岩球会一直挂在尾巴上，直到被累计伤害打坏。</li>
+  </ul>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>尾巴砸地大爆炸（大招）：原地纵向打转，跳起来用尾巴砸地并引起爆炸；挂着岩球时紧接着还有第二次、范围更大的爆炸。这招会追着人打，一看到蓄势就尽量跑远；打完后它会长时间原地威吓，可以反击。</li>
+    <li>尾巴放出三道熔岩：沿地面直线推进，离得越远三道之间的缝越大。离得远就从缝里穿过；贴得太近没有缝，就往左右闪或先退开。</li>
+    <li>钻地突袭：钻进地里快速逼近，从脚下钻出来，四周同时冒出岩块。不要站在原地，也别被岩块堵住退路。</li>
+    <li>场上冒出来的红色岩块过一阵会爆炸，别在岩块旁边打它。</li>
+    <li>用尾巴挡在前面冲撞，再转身跳起砸尾，两段连在一起，躲到整套打完再出手。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>平常砍头部（斩 55）或尾巴尖；头和四肢发红时，优先砍发红的头部和前肢。</li>
+    <li>尾巴攻击稍远也打得到、预兆不好看出来，站远了也要随时准备防御或闪避；尾巴类攻击都能普通防御。</li>
+    <li>大招打完后它会长时间原地威吓，这时上去打。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>平常射头部（弹 45）；发红时射前肢（弹 60），其次头部。尾巴的弹肉质很硬，大岩球也不是弱点。</li>
+    <li>尾巴攻击够得远，站远不等于安全；三道熔岩在中远距离时缝更宽，从缝里穿过。</li>
+    <li>爆破几乎无效，其他异常状态效果也一般。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>熔岩和爆炸带火属性，火属性的属性异常用打消果实解除。</li>
+    <li>它造出的岩块会爆炸，不能像泥翁龙那样当踏脚。</li>
+    <li>大岩球靠累计伤害打坏，闪光球打不掉。闪光球、落穴陷阱、麻痹陷阱有效，音爆弹无效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>泥还是泥，却是热泥（熔岩洞）</li>
+    <li>雪上加蛛（熔岩洞）</li>
+    <li>沸腾的后宫权力之争（熔岩洞）</li>
+    <li>激情燃烧！熔岩洞的考验（熔岩洞）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/343436">GameWith：熔翁龙攻略（2025-07-10 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/454400">Game8 JP：熔翁龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/377074">Game8：Magma Almudron（2026-06-17 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%82%AA%E3%83%AD%E3%83%9F%E3%83%89%E3%83%AD%E4%BA%9C%E7%A8%AE">モンハン大辞典 Wiki：オロミドロ亜種（2026-09-09 更新）</a></li>
+      <li><a href="https://mhrise.com/data/4539.html">攻略レシピ：溶翁竜（各状态的肉质）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/095_01.html">MHRice：熔翁龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/15778133">Kiranico：熔翁龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>
