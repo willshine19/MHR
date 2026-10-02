@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>角龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>角龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>只用身体和角攻击，每一下都很痛，会潜到地下。全部有伤害的招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">作为沙漠暴君被人畏惧的飞龙。特征是两根扭曲的角，因而得名“角龙”。领地意识极强，会对领地的入侵者展现出近乎异常的攻击性。另外，可能是由于其常潜入沙中，听觉非常发达，对声音很敏感。草食性，主食为仙人掌。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部有伤害的招式都能普通防御，不需要防御强化（拆包数据）。侧身冲撞和甩尾飞石从任何方向都能防（拆包数据和实测）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">角</td><td>21</td><td>20</td></tr>
+        <tr><td class="nowrap">头部</td><td>45</td><td>40</td></tr>
+        <tr><td class="nowrap">颈部</td><td>40</td><td>25</td></tr>
+        <tr><td class="nowrap">腹部</td><td><strong>65</strong></td><td>40</td></tr>
+        <tr><td class="nowrap">背部</td><td>25</td><td>35</td></tr>
+        <tr><td class="nowrap">翼</td><td>40</td><td><strong>60</strong></td></tr>
+        <tr><td class="nowrap">腿</td><td>35</td><td>35</td></tr>
+        <tr><td class="nowrap">尾巴</td><td>50</td><td>45</td></tr>
+        <tr><td class="nowrap">尾巴尖</td><td>23</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>冰 30、水 25、龙 25、雷 10、火 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 100、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">一拉开距离就冲撞、潜地、甩尾飞石</td><td data-label="长枪">贴在侧面打腿；背靠岩壁引它冲撞撞墙</td><td data-label="弓">侧面中近距离，打翼</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">嘴里吐黑烟</td><td data-label="变化">攻击 ×1.2、动作速度 ×1.05，持续 90 秒；音爆弹无效</td><td data-label="长枪">它一潜地就收刀，准备扑地回避</td><td data-label="弓">同左；它从地下跃出时可以用闪光球打下来</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.92，持续 90 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">潜在地下</td><td data-label="怎么判断">地面有翻起的沙土在移动</td><td data-label="变化">从脚下钻出，或从远处跃出</td><td data-label="长枪">没发怒就扔音爆弹，它会卡住挣扎，趁机输出</td><td data-label="弓">同左</td></tr>
+        <tr><td data-label="状态">角被破坏</td><td data-label="怎么判断">断一根，或两根都断</td><td data-label="变化">角攻击的伤害下降、冲撞距离变短、不再插进墙里</td><td data-label="长枪">不能再引它撞墙</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>断角是永久的。</li>
+  </ul>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>潜地后从脚下钻出或从远处跃出，伤害比冲撞还高；它一潜地就收刀，准备扑地回避。</li>
+    <li>冲撞：走几步后会突然转向冲过来。从侧面躲，别背对着它直线跑。</li>
+    <li>大师级新招：先往后仰，再突然向前扑砸角，追踪强、扑得远；冲撞途中也会急停接这一招。离得近就趁它后仰钻到腹下，离得远就等到最后一刻再横闪。</li>
+    <li>大师级新招：蓄力很久后把双角垂直砸进地里，判定从头部到胸口；砸完要花很长时间拔角。</li>
+    <li>侧身冲撞判定大、持续时间长，往尾巴方向躲；离远了它会甩尾巴飞石头，瞄得很准，往斜侧方躲。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>站在侧面打腿，腿上累积伤害会让它倒地，倒地后打腹部；别拉开距离，一远它就冲撞、潜地、甩尾飞石。</li>
+    <li>别打角（斩 21，容易弹刀），从侧面打头部（斩 45），这样也能把角打断。</li>
+    <li>蓄力垂直砸角可以举盾防住，防住后趁它拔角的长破绽输出。</li>
+    <li>背靠岩壁或石柱引它冲撞，角插住时输出。沙原里能打碎的石柱下面是流沙，把它引进去效果和落穴陷阱一样。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>打翼（弹 60，全身最高），其次是尾巴；尾巴尖很硬，别打。</li>
+    <li>在它侧面中近距离射，别站太远。</li>
+    <li>麻痹瓶效果最好，爆破瓶其次。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>没有属性攻击，也不会让人进入异常状态。</li>
+    <li>角分两段破坏（先断一根，再断两根）；断角后角攻击的伤害下降、冲撞距离变短，冲撞也不会再把角插进墙里。</li>
+    <li>音爆弹只在它没发怒、并且潜在地下时有效，中了会卡住挣扎；闪光球有效，但致盲时它会乱动，不算安全的输出时间。落穴陷阱、麻痹陷阱有效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>藏身沙尘的暴君（沙原）</li>
+    <li>文殊与猎人！？（沙原）</li>
+    <li>我等荒野三凶龙（沙原）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/256666">GameWith：角龙攻略（2025-11-21 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/371632">Game8 JP：角龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/318633">Game8：Diablos（2026-06-03 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD%E3%82%B9">モンハン大辞典 Wiki：ディアブロス（2026-09-09 更新）</a></li>
+      <li><a href="https://techunt.site/all-directions-guard/">techunt：全方向防御实测（2023-11-25 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/007_00.html">MHRice：角龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/485829389">Kiranico：角龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

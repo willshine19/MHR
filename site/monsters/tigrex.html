@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>轰龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>轰龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>冲撞、飞扑、撕咬为主，动作大又快，近距离的咆哮会伤人。全部有伤害的招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">保留原始风貌的飞龙。性格极为凶残。其发达四肢发起的突进，及强力爪子与下颚的攻击，皆具惊人威力。会为寻求猎物而大范围移动，据传甚至有在寒冷地区现身。会释放强烈的咆哮，因此得名“轰龙”。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部有伤害的招式都能普通防御，不需要防御强化（拆包数据）。飞扑从任何方向都能防（拆包数据和实测）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>65</strong></td><td><strong>55</strong></td></tr>
+        <tr><td class="nowrap">背部</td><td>25</td><td>20</td></tr>
+        <tr><td class="nowrap">腹部</td><td>30</td><td>20</td></tr>
+        <tr><td class="nowrap">前肢</td><td>50</td><td>35</td></tr>
+        <tr><td class="nowrap">腿</td><td>30</td><td>25</td></tr>
+        <tr><td class="nowrap">尾巴根</td><td>40</td><td>30</td></tr>
+        <tr><td class="nowrap">尾巴尖</td><td>45</td><td>30</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>雷 25、水 15、龙 15、火 10、冰 10（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">冲撞会多次转向；两连扑后一定会做威吓动作</td><td data-label="长枪">站在前肢后方到后腿之间；防住咆哮、回转后反击</td><td data-label="弓">别停在中距离；打头部</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">眼睛周围和前肢的血管变红</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.1，持续 120 秒；冲撞转向的次数增加</td><td data-label="长枪">冲撞完全结束前别反击</td><td data-label="弓">冲撞时收刀躲</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 100 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">前肢被破坏</td><td data-label="怎么判断">前爪破损</td><td data-label="变化">破坏时倒地；之后冲撞变慢，偶尔会摔倒</td><td data-label="长枪">前肢斩 50，好打</td><td data-label="弓">前肢弹 35，不如打头</td></tr>
+        <tr><td data-label="状态">尾巴被切断</td><td data-label="怎么判断">尾巴变短</td><td data-label="变化">尾巴攻击的距离变短</td><td data-label="长枪">只有斩击能切断尾巴</td><td data-label="弓">弓切不了</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>大师级新招：抬起一侧前肢扑过来砸下，落地时转身，会追踪；看到它往后稍退就往侧面闪。落地后可能接回转、投石或冲撞。</li>
+    <li>冲撞会多次转向，发怒时转得更多；收刀躲，冲撞途中可能派生回转或咆哮。</li>
+    <li>飞扑（包括两连扑），伤害比冲撞还高。</li>
+    <li>咆哮：近距离正面会受伤，耳塞挡不住这个伤害；范围很窄，站在前肢后方就不受影响。</li>
+    <li>回转：尾巴、头部和前肢都有判定，出得快、范围大。</li>
+    <li>投石：三块石头呈扇形飞出，会根据所在地区附带冰、火或水属性的属性异常。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>贴在前肢后方到后腿之间最安全，站在后腿边时只有回转有威胁。</li>
+    <li>咆哮和回转适合防御后反击；两连扑之后它一定会做威吓动作，这是反击机会。</li>
+    <li>冲撞撞上岩石、牙卡住的时候，以及前肢被破坏倒地的时候，都是输出机会。</li>
+    <li>单前肢扑砸是它威力最高的招，防住后它可能接回转或冲撞，别急着出招。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>打头部（弹 55）；前肢只有 35。</li>
+    <li>中距离最危险：拉开距离它会飞扑、扔石头，贴近到它腋下反而安全。</li>
+    <li>冲撞时收刀躲；爆破瓶效果最好。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>投石带的属性异常：雪地是冰、熔岩边是火、水边或泥地是水，用打消果实解除。</li>
+    <li>左右前肢各破坏一次，每次都会倒地；破坏后冲撞变慢，偶尔会摔倒。尾巴切断后尾巴攻击的距离变短，只有斩击能切。</li>
+    <li>闪光球有效，致盲时它不冲撞，改用回转和撕咬；音爆弹无效；陷阱有效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>绝对强者（城塞高地）</li>
+    <li>我等荒野三凶龙（沙原）</li>
+    <li>我要毛茸茸，现在就要！（冰封群岛）</li>
+    <li>大哥的请求（熔岩洞）</li>
+    <li>沸腾的后宫权力之争（熔岩洞）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/250263">GameWith：轰龙攻略（2026-04-26 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/367273">Game8 JP：轰龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/316018">Game8：Tigrex（2026-06-03 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%86%E3%82%A3%E3%82%AC%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9">モンハン大辞典 Wiki：ティガレックス（2026-09-26 更新）</a></li>
+      <li><a href="https://techunt.site/all-directions-guard/">techunt：全方向防御实测（2023-11-25 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/032_00.html">MHRice：轰龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/808327178">Kiranico：轰龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

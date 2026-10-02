@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雷狼龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>雷狼龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>聚集雷光虫积蓄电能，蓄满后进入超带电状态，攻击力和敏捷上升。全部招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">缠绕雷电的身姿令此牙龙种得名“雷狼龙”。因栖息于险峻深山，其尖爪锋锐且四肢强韧。据称其狩猎时通过聚集无数雷光虫，可令身缠电力获得飞跃性提升，并变化为“超带电状态”。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部招式都能普通防御，不需要防御强化（拆包数据）。单发威力最高的是背面压、超带电时的前肢重拍和尾巴后空翻。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>65</strong></td><td><strong>70</strong></td></tr>
+        <tr><td class="nowrap">本体</td><td>25</td><td>30</td></tr>
+        <tr><td class="nowrap">颈・背部</td><td>45</td><td>35</td></tr>
+        <tr><td class="nowrap">腿跟</td><td>44</td><td>30</td></tr>
+        <tr><td class="nowrap">前肢</td><td>25</td><td>30</td></tr>
+        <tr><td class="nowrap">后肢</td><td>45</td><td>35</td></tr>
+        <tr><td class="nowrap">尾巴</td><td>30</td><td>25</td></tr>
+        <tr><td class="nowrap">尾巴尖</td><td>21</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>冰 25、水 20、火 10、龙 5、雷 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 300、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">背部不发光，身上没缠雷光虫</td><td data-label="变化">招式基本不带雷</td><td data-label="长枪">打后肢或头部</td><td data-label="弓">打头部（弹 70）</td></tr>
+        <tr><td data-label="状态">蓄电</td><td data-label="怎么判断">停下来吸引雷光虫；拉开距离后多半会蓄电</td><td data-label="变化">毫无防备；身上开始缠电，说明快进入超带电了</td><td data-label="长枪">打头部打断它，同时留意它接尾巴后空翻</td><td data-label="弓">打头部</td></tr>
+        <tr><td data-label="状态">超带电</td><td data-label="怎么判断">全身缠满雷光虫、背部发光；进入时会放电</td><td data-label="变化">攻击力和敏捷上升，招式带雷，麻痹陷阱失效；背部斩 70、弹 55，前肢斩 43，后肢斩 50</td><td data-label="长枪">打前肢、后肢、头部；它撞完必接重拍，举盾</td><td data-label="弓">打头部或背部</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">只在超带电时出现</td><td data-label="变化">攻击 ×1.2、动作速度 ×1.1，持续 70 秒；大师级的双连重拍后会追加雷爪击</td><td data-label="长枪">第二下重拍后先举盾，等雷爪击</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">超带电被解除</td><td data-label="怎么判断">大幅畏缩、倒地</td><td data-label="变化">倒地时能从背部采集</td><td data-label="长枪">打头部、采集背部</td><td data-label="弓">打头部</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 75 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>大师级新招：超带电时前肢蓄满电连续重拍两下，第二下追踪很强；发怒时后面还会再接雷爪击。躲完第二下别马上出手；被第一下打中时别急着翔虫受身。</li>
+    <li>背面压：超带电时先冲刺，再跳起用背砸下来，周围会落雷。冲刺之后别马上靠近。</li>
+    <li>雷爪击：压低身子蓄力，然后从下往上挥爪，地面窜出雷。打完一定会做威吓动作，是反击机会。</li>
+    <li>连续前脚拍击：追踪很强，往出手那只前肢的反方向躲；超带电时撞完一定接前肢重拍。</li>
+    <li>远程雷：向前方直线落雷，还有走弧线的雷光虫弹。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>站在后肢或前肢后方，后肢累计伤害会让它倒地；超带电时背部、前肢、后肢都变软。</li>
+    <li>蓄电时上去打头，打到它畏缩就能打断蓄电；但前脚拍击后接的蓄电常马上派生尾巴后空翻或飞扑，别贪。</li>
+    <li>反击时机：雷爪击后、背面压后、双连重拍第二下之后。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>头部一直是最软的（弹 70）；超带电时背部也有 55。</li>
+    <li>远程要注意直线落雷、雷光虫弹，以及背面压落地的落雷范围。</li>
+    <li>爆破瓶效果最好；麻痹几乎无效（初始耐性 300）。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>雷属性的属性异常：更容易昏厥，用打消果实解除；昏厥耐性可以应对。</li>
+    <li>麻痹陷阱只在没有超带电时有效，时间极短，还会给它充电；超带电时直接无效。要捕获就用落穴陷阱。</li>
+    <li>倒地时能从背部采集；采过之后它更难进入超带电，超带电时也能更快解除。</li>
+    <li>闪光球有效，音爆弹无效；可破坏头部（两段）、背部、左右前肢，尾巴可以切断。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>无神神社的雷狼龙（废神社）</li>
+    <li>双雷照夜（密林）</li>
+    <li>绿宝石电膜，蓝宝石镰爪（水没林）</li>
+    <li>身披黑衣的龙（城塞高地）</li>
+    <li>城塞高地的恶灵传闻！？（城塞高地）</li>
+    <li>冻冻电电爆爆（城塞高地）</li>
+    <li>“优美剧烈的移动术？”之卷（废神社）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/250265">GameWith：雷狼龙攻略（2026-10-01 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/367279">Game8 JP：雷狼龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/322162">Game8：Zinogre（2026-06-03 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%82%B8%E3%83%B3%E3%82%AA%E3%82%A6%E3%82%AC">モンハン大辞典 Wiki：ジンオウガ（2026-09-27 更新）</a></li>
+      <li><a href="https://mhrise.com/data/4483.html">攻略レシピ：ジンオウガ（超带电时的肉质）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/057_00.html">MHRice：雷狼龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/1432800563">Kiranico：雷狼龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

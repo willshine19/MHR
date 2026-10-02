@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>炽妃蜘蛛 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>炽妃蜘蛛</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>⚠️ 用卫蜘蛛和丝引爆攻击；嘴里喷火和吐丝要防御强化才能挡。</strong></p>
+  </div>
+  <p class="lead">妃蜘蛛的亚种，体内含有爆炸成分。全身缠绕着耐爆的黑红色蛛丝令人联想起余烬，因此得名“炽妃蜘蛛”。炽妃蜘蛛的指挥系统高度发达，它的发声器官能发出的特殊声音命令幼体。攻击时坚硬的蛛爪像打火石般敲击，从而引发爆炸。此时，炽妃蜘蛛还会生成传导爆轰的特殊蛛丝与周围的幼体相连，爆炸范围能扩大到幼体所在的位置。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>需要防御强化：嘴里喷的火（包括亚种独有的抬头横扫 180° 喷火）和吐丝。爆炸类攻击（撒卫蜘蛛再引爆、扇形丝引爆、砸地爆炸）、背对冲撞、爪击、身体侧面喷的火焰气体都能普通防御（拆包数据）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>55</strong></td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">爪</td><td>20</td><td>5</td></tr>
+        <tr><td class="nowrap">胸部</td><td>25</td><td>5</td></tr>
+        <tr><td class="nowrap">后腿（丝）</td><td>45</td><td>30</td></tr>
+        <tr><td class="nowrap">腹部</td><td>38</td><td>10</td></tr>
+        <tr><td class="nowrap">腹部（茧化状态）</td><td>50</td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">腿</td><td>30</td><td>10</td></tr>
+        <tr><td class="nowrap">爪（破坏后）</td><td>30</td><td>20</td></tr>
+        <tr><td class="nowrap">前腿（丝）</td><td>45</td><td><strong>45</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>水 30、冰 15、火 0、雷 0、龙 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 250、麻痹 180、睡眠 150、爆破 120（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">缠丝、背着卫蜘蛛（开场）</td><td data-label="怎么判断">四条腿缠着黑红色的丝，腹部挂着卫蜘蛛</td><td data-label="变化">常把卫蜘蛛撒出去，再顺着丝引爆</td><td data-label="长枪">先砍腿（丝），打坏两处后倒地并转入茧化</td><td data-label="弓">射前腿（丝）（弹 45）</td></tr>
+        <tr><td data-label="状态">茧化状态</td><td data-label="怎么判断">腹部裹成一大团发红的茧</td><td data-label="变化">茧化的腹部变软（斩 50、弹 45）；正面会吐几道丝，要防御强化</td><td data-label="长枪">砍茧化的腹部，大倒地后去砍头</td><td data-label="弓">射茧化的腹部</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">—</td><td data-label="变化">攻击 ×1.2、动作速度 ×1.2，持续 120 秒</td><td data-label="长枪">防御要求和平时一样</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.92，持续 70 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>茧被打到大倒地，或者时间到了，茧化就会结束；时间到时它会向周围喷火焰气体。</li>
+  </ul>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>全方位撒卫蜘蛛再引爆（大招）：吼叫着向四周射出连着丝的卫蜘蛛，然后点火，本体周围和每只卫蜘蛛的位置都会爆炸。在它准备时离开本体，站到没有丝的区域。</li>
+    <li>背对倒退冲撞：背对你、腹部贴地，然后高速倒退，伤害和昏厥值都高。往侧面闪。</li>
+    <li>嘴里喷火：直线喷火、大师级连喷两道直线火，以及亚种独有的抬头横扫 180° 喷火。都要防御强化，没有就躲；喷之前会先吐红色气体。</li>
+    <li>扇形丝引爆：向前方扇形撒出连着丝的卫蜘蛛，火沿着丝烧过去，到卫蜘蛛那里爆炸。直接离开范围最稳。</li>
+    <li>腹部连砸两下（带爆炸）：躲开第一下后不要马上冲上去。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>喷火和吐丝要防御强化：临时换上强壁珠Ⅱ【4】是 Lv2（减少伤害 50%），不带就一律躲开。</li>
+    <li>能普通防御的：大招和扇形丝引爆的爆炸、腹部和前脚砸地的爆炸、背对冲撞、爪击、咬、身体侧面喷的火焰气体。</li>
+    <li>打的顺序：先砍腿（丝），打坏两处后它倒地并转入茧化；再砍茧化的腹部，伤害够了它会大倒地，这时去砍头。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>缠丝时射前腿（丝）（弹 45，和头一样高），后腿（丝）只有 30；茧化后射腹部（弹 45）。平常的腹部、胸、爪都很硬。</li>
+    <li>直线喷火和扇形丝引爆都打得到远处，看到红色气体就先躲。</li>
+    <li>顺手射掉卫蜘蛛：它们血很少，留着会扩大爆炸范围。毒、爆破几乎无效。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>被丝缠住：推摇杆、连按按键，或者用消散剂；它的咬也会缠丝。</li>
+    <li>喷火和爆炸都带火属性，火属性的属性异常用打消果实解除。</li>
+    <li>腿上的丝每重新缠一次，打坏它需要的伤害就更高（拆包数据）。</li>
+    <li>落穴陷阱、麻痹陷阱有效，音爆弹无效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>喷烟乱舞的贵妃（熔岩洞）</li>
+    <li>冻冻电电爆爆（城塞高地）</li>
+    <li>沸腾的后宫权力之争（熔岩洞）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/346790">GameWith：炽妃蜘蛛攻略（2026-05-10 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/461367">Game8 JP：炽妃蜘蛛攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/379530">Game8：Pyre Rakna-Kadaki（2026-06-17 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%A4%E3%83%84%E3%82%AB%E3%83%80%E3%82%AD%E4%BA%9C%E7%A8%AE">モンハン大辞典 Wiki：ヤツカダキ亜種（2026-09-10 更新）</a></li>
+      <li><a href="https://gamewith.jp/mhrize/article/show/265182">GameWith：防御强化（2024-12-28 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/395804">Game8：不可防御招式列表（2026-06-30 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/094_01.html">MHRice：炽妃蜘蛛（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/102732212">Kiranico：炽妃蜘蛛（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

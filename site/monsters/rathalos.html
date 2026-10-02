@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>火龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>火龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>地面和空中交替战斗，空中招式多，蹴爪带毒。全部招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">令人畏惧的飞龙，又称“天空王者”。与“雌火龙”一起以巢穴为中心占有广阔领地，并从空中进行监视。一旦发现入侵者，便会发挥自身飞行特长，从上空急速俯冲而下，以含毒的利爪抓向对方。由于其会喷火，故人称“火龙”。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部招式都能普通防御，不需要防御强化（拆包数据）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>65</strong></td><td><strong>60</strong></td></tr>
+        <tr><td class="nowrap">颈部</td><td>35</td><td>30</td></tr>
+        <tr><td class="nowrap">背部</td><td>25</td><td>20</td></tr>
+        <tr><td class="nowrap">腹部</td><td>25</td><td>20</td></tr>
+        <tr><td class="nowrap">尾巴</td><td>45</td><td>35</td></tr>
+        <tr><td class="nowrap">翼</td><td>50</td><td>40</td></tr>
+        <tr><td class="nowrap">腿</td><td>35</td><td>30</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>龙 30、雷 20、水 15、冰 15、火 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 250、麻痹 180、睡眠 150、爆破 120（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">地面和空中交替；空中有喷火扫射、火球、带毒的俯冲蹴爪</td><td data-label="长枪">贴着侧面和腿打；它跳起踩踏时举盾</td><td data-label="弓">打头部；飞起来就扔闪光球</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">嘴里有火</td><td data-label="变化">攻击 ×1.26、动作速度 ×1.15，持续 80 秒；双连咬带火属性的属性异常</td><td data-label="长枪">双连咬照样能防</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.92，持续 80 秒；冲撞时会摔倒，喷火会失败</td><td data-label="长枪">它摔倒时打头</td><td data-label="弓">它摔倒时打头</td></tr>
+        <tr><td data-label="状态">翼被破坏</td><td data-label="怎么判断">翼膜破损</td><td data-label="变化">留在空中的能力下降</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>大师级新招：飞起来后低空滑翔、一边喷火，在地面烧出一条直线火路，地上的火会残留一会儿。钻到它正下方或绕到喷火方向的另一侧；躲过后别停，下一招常是蹴爪。</li>
+    <li>从空中把地面一路烧过来的大喷火，是它伤害最高的招。瞄得不准、判定窄，提前横向躲开。</li>
+    <li>空中俯冲蹴爪，会让人中毒。看到它脚底对着你就往横向闪。</li>
+    <li>地面双连咬；发怒时咬中会有火属性的属性异常。</li>
+    <li>空中喷火扫射，前方大范围左右扫，往它正下方或后方躲。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>地面时贴着侧面和腿打，腿上累积伤害会让它倒地，倒地后打头。</li>
+    <li>贴腿时它会跳起来踩踏，看到起跳就举盾或走开；回转甩尾时站在头部后方跟着它转。</li>
+    <li>飞起来时扔闪光球把它打下来（最多 4 次有效），掉下来后很快会站起来，要抓紧打头。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>打头部，其次是翼和尾巴；尾巴只能被斩击切断，弓切不了。</li>
+    <li>它在空中时别站正前方；被扫射时往它正下方或喷火方向的反侧躲。</li>
+    <li>毒对它效果差，其他异常状态效果也一般，默认用强击瓶。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>蹴爪带毒，用解毒药解；火属性的属性异常用打消果实解除。</li>
+    <li>可破坏头部、背部、左右翼，尾巴可以切断；翼被破坏后它留在空中的能力会下降。</li>
+    <li>闪光球有效，最多 4 次；音爆弹无效；落穴陷阱、麻痹陷阱都有效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>城塞高地的护卫（城塞高地）</li>
+    <li>沉睡于古城的王者（城塞高地）</li>
+    <li>镰刀与火焰的危险程度问题（熔岩洞）</li>
+    <li>身披黑衣的龙（城塞高地）</li>
+    <li>喷烟乱舞的贵妃（熔岩洞）</li>
+    <li>沸腾的后宫权力之争（熔岩洞）</li>
+    <li>激情燃烧！熔岩洞的考验（熔岩洞）</li>
+    <li>冰狼，不回首望月（城塞高地）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/247177">GameWith：火龙攻略（2026-07-26 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/365009">Game8 JP：火龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/315736">Game8：Rathalos（2026-06-03 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%AA%E3%82%AA%E3%83%AC%E3%82%A6%E3%82%B9">モンハン大辞典 Wiki：リオレウス（2026-09-09 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/002_00.html">MHRice：火龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/381074408">Kiranico：火龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

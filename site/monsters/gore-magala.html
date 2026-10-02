@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黑蚀龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>黑蚀龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>招式和鳞粉会让人感染狂龙症；狂龙化后长出触角、攻击方式大变。全部有伤害的招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">大型怪物，身上的翼膜宛如一件漆黑的斗篷。没有眼睛这种视觉器官，靠翼膜散播的鳞粉来掌握生物的位置，并提高自身的感知能力。当感知能力达到顶峰时它会长出触角并伸出翼足，进入狂龙化状态。此外，据查其播撒的鳞粉会影响猎人的身体机能，但猎人在克服其影响后反而会提升能力。世人畏惧这种特殊的性质，称之为“黑蚀龙”。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部有伤害的招式都能普通防御，不需要防御强化（拆包数据）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td>65</td><td>45</td></tr>
+        <tr><td class="nowrap">颈部</td><td>45</td><td>25</td></tr>
+        <tr><td class="nowrap">身体</td><td>25</td><td>20</td></tr>
+        <tr><td class="nowrap">翼足</td><td>27</td><td>20</td></tr>
+        <tr><td class="nowrap">前肢</td><td>42</td><td>25</td></tr>
+        <tr><td class="nowrap">后肢</td><td>38</td><td>35</td></tr>
+        <tr><td class="nowrap">翼</td><td>26</td><td>15</td></tr>
+        <tr><td class="nowrap">尾巴</td><td>38</td><td>25</td></tr>
+        <tr><td class="nowrap">触角（狂龙化时）</td><td><strong>75</strong></td><td><strong>50</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>龙 25、火 20、雷 15、冰 5、水 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">四足行走，没有触角</td><td data-label="变化">—</td><td data-label="长枪">都能防；小心扫射吐息</td><td data-label="弓">打头部；三连吐息会追远处的人</td></tr>
+        <tr><td data-label="状态">狂龙化</td><td data-label="怎么判断">吼叫、冒紫色气，长出触角，伸出翼足变成六足</td><td data-label="变化">攻击方式大变：多用横向扩散的爆炸吐息和翼足拍击；多出触角这个部位（斩 75、弹 50）</td><td data-label="长枪">站它左右两侧，集中打头和触角</td><td data-label="弓">打触角；吐息沿前后方向躲</td></tr>
+        <tr><td data-label="状态">狂龙化被解除</td><td data-label="怎么判断">触角吃够伤害后往后仰着翻倒</td><td data-label="变化">倒地</td><td data-label="长枪">反击机会</td><td data-label="弓">反击机会</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">—</td><td data-label="变化">攻击 ×1.15、动作速度 ×1.08，持续 80 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.98，持续 60 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>狂龙化时的近距离爆炸吐息：朝前方吐出鳞粉弹，落点向左右连锁爆炸，是它伤害最高的招。沿它身体的前后方向移动，站在左右两侧就打不到。</li>
+    <li>狂龙化时的远距离爆炸吐息：吐到远处，落点同样向左右连锁爆炸，也是沿前后方向躲。</li>
+    <li>平常时的近距离扫射吐息：朝前方大范围横扫，伤害高。前摇时拉开距离，或者钻到它身下。</li>
+    <li>狂龙化时双翼足砸地：前摇很长，看得清。</li>
+    <li>飞起后高速直线俯冲突进：看到它扭身的前摇就往左右闪。</li>
+    <li>平常时的三连吐息：三发会拐弯，离得远很难躲。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>狂龙化后站在它左右两侧：爆炸吐息是横向扩散的，侧面打不到。</li>
+    <li>狂龙化时集中打头和触角，伤害够了会解除狂龙化并倒地；陷阱有效，可以配合陷阱打头。</li>
+    <li>中了狂龙症就继续攻击来克服，来不及时吃打消果实把槽压低。地上的鳞粉区域会累积狂龙症，绕开走。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>弹肉质最高的是触角（只在狂龙化时出现），其次是头部。</li>
+    <li>平常的三连吐息会拐弯追着远处的人打；狂龙化后的远距离爆炸吐息沿前后方向躲。</li>
+    <li>闪光球、音爆弹都无效，没法把它从空中打下来。爆破瓶效果好。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>狂龙症：被带狂龙症的攻击打中或碰到鳞粉，狂龙症的槽会上涨。槽满之前打出一定伤害就能克服，之后一段时间会心率提升；槽满后发症，体力无法自然回复、受到的伤害增加。打消果实只能降槽，不能清零。</li>
+    <li>狂龙化：吼叫后冒紫色气，长出触角，伸出翼足变成六足；触角只在狂龙化时出现，也只能在那时破坏。</li>
+    <li>落穴陷阱、麻痹陷阱有效；闪光球、音爆弹无效。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>身披黑衣的龙（城塞高地）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/346788">GameWith：黑蚀龙攻略（2026-10-02 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/461365">Game8 JP：黑蚀龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/379526">Game8：Gore Magala（2026-06-17 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%82%B4%E3%82%A2%E3%83%BB%E3%83%9E%E3%82%AC%E3%83%A9">モンハン大辞典 Wiki：ゴア・マガラ（2026-09-21 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/071_00.html">MHRice：黑蚀龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/1161896781">Kiranico：黑蚀龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>

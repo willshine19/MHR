@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>千刃龙 · 怪物 · 曙光攻略</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d2026" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<script src="../assets/js/sw-register.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../index.html">曙光攻略</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../builds/index.html">配装</a>
+      <a href="index.html" aria-current="page">怪物</a>
+      <a href="../about.html">关于</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <h1>千刃龙</h1>
+  <p class="page-meta">MR 4★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-10-02 核对</p>
+
+  <div class="summary">
+    <p><strong>起飞、踢击、落地切换得很快，刃鳞会造成裂伤。全部招式都能普通防御。</strong></p>
+  </div>
+  <p class="lead">大型飞龙种。全身覆盖着如刀刃般锋利的鳞片，由此得名“千刃龙”。它有很强的领地意识，生性凶猛好斗。它还具备优越的飞行能力与强劲的后腿，以此攻击其它大型怪物，不断进行激烈的争斗而闻名。有报告称它还能发射全身的刃鳞，从而让对手造成裂伤。（游戏内介绍）</p>
+
+  <details class="toc">
+    <summary>本页目录</summary>
+    <ol>
+      <li><a href="#guard">能不能挡</a></li>
+      <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
+      <li><a href="#danger">危险招式</a></li>
+      <li><a href="#lance">长枪打法</a></li>
+      <li><a href="#bow">弓打法</a></li>
+      <li><a href="#mechanics">特殊机制</a></li>
+      <li><a href="#quests">任务</a></li>
+      <li><a href="#sources">资料来源</a></li>
+    </ol>
+  </details>
+
+  <h2 id="guard">长枪：能不能挡</h2>
+  <p>全部招式都能普通防御，不需要防御强化（拆包数据）。</p>
+
+  <h2 id="weakness">弱点</h2>
+  <p>肉质数值越高越软，粗体是该列最高值。长枪看「斩」，弓看「弹」。</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>部位</th><th>斩（长枪）</th><th>弹（弓）</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">头部</td><td><strong>55</strong></td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">颈部</td><td>35</td><td>30</td></tr>
+        <tr><td class="nowrap">腹部</td><td>35</td><td>25</td></tr>
+        <tr><td class="nowrap">背部</td><td>30</td><td>20</td></tr>
+        <tr><td class="nowrap">翼臂</td><td>30</td><td>20</td></tr>
+        <tr><td class="nowrap">翼</td><td>35</td><td>25</td></tr>
+        <tr><td class="nowrap">腿</td><td>50</td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">尾巴</td><td>40</td><td>35</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>属性：</strong>雷 25、冰 15、水 10、龙 5、火 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
+  <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 300、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">—</td><td data-label="长枪">全部招式都能防；贴后腿打</td><td data-label="弓">打头部、腿</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">全身刃鳞竖起</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.05，持续 150 秒；多出带刃鳞的攻击</td><td data-label="长枪">照样都能防，注意多出来的刃鳞</td><td data-label="弓">刃鳞变多，保持移动</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 60 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">起飞中</td><td data-label="怎么判断">拍翅离地</td><td data-label="变化">起飞、攻击、落地是一整套，不会长时间悬停</td><td data-label="长枪">防住俯冲，趁它落地打腿</td><td data-label="弓">用闪光球打下来，要提前准备</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="danger">危险招式</h2>
+  <ul>
+    <li>高空急袭飞踢：颈部刃鳞抖动，拍两下翅膀飞到高处，往后一收再俯冲踢下。这是它伤害最高的一招，被打中后不能翔虫受身。看完前摇往正侧面闪。</li>
+    <li>低空回旋踢：飞起后绕到侧面或身后低空踢，命中会把人按倒，随后射出一排刃鳞追击。往前后方向闪；被打中立刻翔虫受身离开。</li>
+    <li>后跳两连踢：一定连踢两下，每下都会重新对准你。连闪两次，第二下之后再反击。</li>
+    <li>刃鳞射击：先从头部、再从尾巴射出刃鳞。一直移动，别让刃鳞堆在一起；落在地上的刃鳞碰到也会裂伤。</li>
+  </ul>
+
+  <h2 id="lance">长枪打法</h2>
+  <ul>
+    <li>贴着后腿打，脚下相对安全；在它身下会被脚爪抓，往侧面躲。</li>
+    <li>急袭飞踢落地后有大破绽：举盾挡下俯冲，趁它落地打腿。</li>
+    <li>两连踢挡完第二下再出手；闪光球把它打下来后也是输出机会。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/lance-mr3.html">长枪配装：MR 3★</a>。</p>
+
+  <h2 id="bow">弓打法</h2>
+  <ul>
+    <li>弹肉质最高的是头部和腿。</li>
+    <li>它飞起时扔闪光球能打下来，但它不会长时间悬停，要提前准备。</li>
+    <li>减气瓶、爆破瓶效果好；麻痹的初始耐性很高（300），不推荐。</li>
+  </ul>
+  <p>现在的配装见 <a href="../builds/bow-mr3.html">弓配装：MR 3★</a>。</p>
+
+  <h2 id="mechanics">特殊机制</h2>
+  <ul>
+    <li>裂伤：被刃鳞打中后进入裂伤，之后的动作会累积伤害，再挨打时一次扣掉。原地不动（蹲下最快）、吃刺身鱼或烤熟的肉可以解除。</li>
+    <li>闪光球、落穴陷阱、麻痹陷阱有效，音爆弹无效。</li>
+    <li>头部、左右翼、左右腿可以破坏；尾巴只能用斩击切断。</li>
+  </ul>
+
+  <h2 id="quests">会出现的 MR 4★ 任务</h2>
+  <ul>
+    <li>千刃来袭（沙原）</li>
+    <li>废神社三狂徒（废神社）</li>
+    <li>碎尸万段，碾为微尘（城塞高地）</li>
+    <li>身披黑衣的龙（城塞高地）</li>
+    <li>我等荒野三凶龙（沙原）</li>
+    <li>“优美剧烈的移动术？”之卷（废神社）</li>
+  </ul>
+
+  <section class="sources">
+    <h2 id="sources">资料来源</h2>
+    <p>招式描述只采用多个攻略站说法一致的内容；招式能否防御以 Kiranico 拆包数据为准。</p>
+    <ul>
+      <li><a href="https://gamewith.jp/mhrize/article/show/343431">GameWith：千刃龙攻略（2026-09-24 更新）</a></li>
+      <li><a href="https://game8.jp/mhrise/454399">Game8 JP：千刃龙攻略（2026-07-30 更新）</a></li>
+      <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/377075">Game8：Seregios（2026-06-17 更新）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%82%BB%E3%83%AB%E3%83%AC%E3%82%AE%E3%82%AA%E3%82%B9">モンハン大辞典 Wiki：セルレギオス（2026-09-09 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/077_00.html">MHRice：千刃龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/monsters/1280901767">Kiranico：千刃龙（肉质、异常状态、招式能否防御）</a></li>
+      <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
+    </ul>
+  </section>
+  <a class="to-top" href="#top" aria-label="回到顶部">↑</a>
+</main>
+<footer class="site-footer">
+  <div class="wrap">《怪物猎人 崛起：曙光》Switch 版个人攻略 · 数据基准 Ver.16.0.2</div>
+</footer>
+</body>
+</html>
