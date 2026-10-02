@@ -5,8 +5,8 @@
 
 检查项：站内链接和锚点能打开、不用以 / 开头的路径、外链用 https、
 页面基本结构（lang、viewport、title、导航）、内容页的元信息、本页目录和资料来源、
-非官方译名、离线缓存（每页的 head 标签、sw.js 预缓存列表、manifest）、
-_redirects 跳转规则。有问题时逐条列出，并以状态码 1 退出。
+非官方译名、图片的 alt 和宽高、怪物页和怪物列表卡片的图标、
+离线缓存（每页的 head 标签、sw.js 预缓存列表、manifest）、_redirects 跳转规则。有问题时逐条列出，并以状态码 1 退出。
 """
 import json
 import re
@@ -35,6 +35,9 @@ SW_VERSION = 'const VERSION = "dev";'  # CI 部署时把 dev 换成提交号
 # 不进离线缓存的文件：service worker 自己，以及只给 Cloudflare 读的跳转规则
 NOT_PRECACHED = {"sw.js", "_redirects"}
 PWA_HEAD = ["manifest.webmanifest", "assets/js/sw-register.js"]
+# 怪物页 monsters/<slug>.html 的游戏内图标，列表页卡片用同一张
+MONSTER_DIR = "monsters"
+MONSTER_ICON = "assets/img/monsters/{}.webp"
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 
 
@@ -53,7 +56,10 @@ class PageParser(HTMLParser):
         self.h2_ids = []  # 每个 h2 的 id，没有 id 记 None
         self.has_toc = False
         self.toc_links = []
-        self._stack = []  # (标签名, 标记)，标记是 nav / sources / meta / title / toc 或 None
+        self.images = []  # (img 的属性, 所在 a.card 的 href)，不在卡片里记 None
+        self.cards = []  # 每个 a.card 的 href
+        self._card = None
+        self._stack = []  # (标签名, 标记)，标记是 nav / sources / meta / title / toc / card 或 None
 
     def _context(self):
         return {marker for _, marker in self._stack if marker}
@@ -69,6 +75,8 @@ class PageParser(HTMLParser):
             self.has_viewport = True
         if tag == "h2":
             self.h2_ids.append(a.get("id"))
+        if tag == "img":
+            self.images.append((a, self._card))
         if (tag == "link" and a.get("rel") == "manifest") or (tag == "script" and a.get("src")):
             self.head_assets.append(a.get("href") or a.get("src"))
         url = a.get("href") if tag in ("a", "link") else a.get("src") if tag in ("img", "script") else None
@@ -95,11 +103,17 @@ class PageParser(HTMLParser):
         elif tag == "details" and "toc" in classes:
             marker = "toc"
             self.has_toc = True
+        elif tag == "a" and "card" in classes:
+            marker = "card"
+            self._card = a.get("href")
+            self.cards.append(self._card)
         self._stack.append((tag, marker))
 
     def handle_endtag(self, tag):
         for i in range(len(self._stack) - 1, -1, -1):
             if self._stack[i][0] == tag:
+                if any(marker == "card" for _, marker in self._stack[i:]):
+                    self._card = None
                 del self._stack[i:]
                 break
 
@@ -156,6 +170,7 @@ def check_site(site):
     expected_nav = [(site / t).resolve() for t in NAV_TARGETS]
     pwa = (site / "sw.js").exists()
     pwa_head = {(site / t).resolve() for t in PWA_HEAD}
+    monster_dir = site / MONSTER_DIR
     for page, (p, text) in parsed.items():
         rel = page.relative_to(site).as_posix()
 
@@ -173,6 +188,14 @@ def check_site(site):
             err(f"导航链接应依次指向 {NAV_TARGETS}")
         for url in p.links:
             check_link(url, page, site, parsed, err)
+        for img, _ in p.images:
+            src = img.get("src") or ""
+            if "alt" not in img:
+                err(f'<img> 要写 alt，纯装饰的图片写 alt=""：{src}')
+            if not (img.get("width") and img.get("height")):
+                err(f"<img> 要写 width 和 height，图片加载时页面才不会跳动：{src}")
+        if page.parent == monster_dir:
+            errors.extend(f"{rel}: {e}" for e in check_monster_icons(page, p, site))
         if pwa and not pwa_head <= {resolve_link(u, page, site)[0] for u in p.head_assets}:
             err(f"<head> 缺少离线缓存用的 {PWA_HEAD}，照抄其他页面 <head> 里的 manifest 到 sw-register.js 那几行")
         # 子目录里的页面是内容页；子目录的 index.html 是列表页，不受内容页规则约束
@@ -195,6 +218,35 @@ def check_site(site):
         errors += check_service_worker(site) + check_manifest(site)
     if (site / "_redirects").exists():
         errors += check_redirects(site)
+    return errors
+
+
+def check_monster_icons(page, p, site):
+    """怪物页要有和页面同名的游戏内图标；怪物列表里链接到怪物页的卡片也要带上这张图标。"""
+    def icon_of(slug):
+        return (site / MONSTER_ICON.format(slug)).resolve()
+
+    def src_of(img):
+        return resolve_link(img.get("src") or "", page, site)[0]
+
+    errors = []
+    if page.name == "index.html":
+        for href in p.cards:
+            target = resolve_link(href or "", page, site)[0]
+            if target.parent != page.parent or target.name == "index.html":
+                continue
+            if icon_of(target.stem) not in [src_of(img) for img, card in p.images if card == href]:
+                errors.append(f"链接到 {href} 的卡片缺少图标 {MONSTER_ICON.format(target.stem)}，"
+                              '照抄其他卡片的 <img class="card-icon">')
+        return errors
+    icons = [img for img, _ in p.images if "monster-icon" in (img.get("class") or "").split()]
+    if not icons:
+        errors.append('怪物页缺少 <img class="monster-icon">（游戏内图标，放在游戏内介绍那段 <p class="lead"> 的开头）')
+    for img in icons:
+        if src_of(img) != icon_of(page.stem):
+            errors.append(f"怪物图标应为 {MONSTER_ICON.format(page.stem)}，和页面同名")
+        if not (img.get("alt") or "").strip():
+            errors.append("怪物图标的 alt 要写明是哪只怪物，如「火龙的游戏内图标」")
     return errors
 
 
