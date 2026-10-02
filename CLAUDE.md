@@ -18,7 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 新增或更新内容页后，同步更新首页的「当前进度」「当前配装」「全部页面」和 `site/builds/index.html`。
 - 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住；列多、每格是一两句话的表（如怪物的状态变化）用 `<table class="stack">`，每个 `<td>` 带 `data-label`，窄屏时每行显示成一张卡片。
 - 内容页在第一个 `<h2>` 前放 `<details class="toc">` 本页目录，依次链接到页面上的全部 h2（每个 h2 都要有语义 id，条目用短标题），`</main>` 前放 `<a class="to-top" href="#top">` 回到顶部。照抄现有配装页或怪物页的写法。
-- 离线缓存（PWA）：每页 `<head>` 在样式表后面都有同样的几行（theme-color、manifest、icon、apple-touch-icon、`sw-register.js`），新页面照抄同目录页面的 `<head>`。`site/` 下增删任何文件，都要同步改 `site/sw.js` 的 `PRECACHE`，否则新页面离线时打不开。
+- 离线缓存（PWA）：每页 `<head>` 在样式表后面都有同样的几行（theme-color、manifest、icon、apple-touch-icon、`sw-register.js`），新页面照抄同目录页面的 `<head>`。`site/` 下增删任何文件，都要同步改 `site/sw.js` 的 `PRECACHE`，否则新页面离线时打不开。`sw.js` 里的 `const VERSION = "dev";` 不要改：CI 部署时会把它换成提交号，让已安装的应用下次联网打开时把全站重新缓存一遍。
 - 页面改名或删除时，在 `site/_redirects` 里加一行「旧地址 新地址 301」（只对 Cloudflare 生效）。
 - 以上几条和导航一样都由 `check_site.py` 检查，报错信息会写明缺什么。
 

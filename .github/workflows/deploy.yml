@@ -34,6 +34,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
+      # 把提交号写进 sw.js：文件一变，已安装的应用下次联网打开时就会把全站重新缓存一遍
+      - name: Stamp service worker version
+        run: |
+          sed -i "s/^const VERSION = \"dev\";/const VERSION = \"${GITHUB_SHA::7}\";/" site/sw.js
+          grep -q "^const VERSION = \"${GITHUB_SHA::7}\";" site/sw.js
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -46,6 +51,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # 把提交号写进 sw.js：文件一变，已安装的应用下次联网打开时就会把全站重新缓存一遍
+      - name: Stamp service worker version
+        run: |
+          sed -i "s/^const VERSION = \"dev\";/const VERSION = \"${GITHUB_SHA::7}\";/" site/sw.js
+          grep -q "^const VERSION = \"${GITHUB_SHA::7}\";" site/sw.js
       # 名称、账号和 site/ 目录都在 wrangler.jsonc 里
       - uses: cloudflare/wrangler-action@v4
         with:

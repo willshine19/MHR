@@ -2,8 +2,11 @@
 // 网络 3 秒内没有响应或断网时改用缓存，所以联网时看到的总是最新内容。
 //
 // site/ 下增删文件后要同步改 PRECACHE（路径相对站点根目录），check_site.py 会检查两边是否一致。
-// 本文件内容一变，浏览器就会装上新版本，不需要手动改缓存名。
+// 本文件内容一变，浏览器就会装上新版本，安装时把 PRECACHE 全部重新下载一遍。
+// VERSION 由 CI 在每次部署时换成提交号，保证每次部署后已安装的应用都会把全站刷新到最新，
+// 包括没有联网打开过的页面。这一行不要改，check_site.py 会检查。
 
+const VERSION = "dev";
 const CACHE = "mhr";
 const NETWORK_TIMEOUT_MS = 3000;
 
@@ -43,7 +46,15 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil((async () => {
+    // 删掉不在 PRECACHE 里的条目（已删除或改名的页面）；目录地址这类顺带缓存的条目，下次访问会再存
+    const cache = await caches.open(CACHE);
+    const keep = new Set(PRECACHE.map((path) => new URL(path, self.location).href));
+    for (const request of await cache.keys()) {
+      if (!keep.has(request.url)) await cache.delete(request);
+    }
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener("fetch", (event) => {

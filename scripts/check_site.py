@@ -31,6 +31,7 @@ META_DATE = re.compile(r"\d{4}-\d{2}-\d{2} 核对")
 WRONG_TERM = re.compile(r'<del class="wrong-term">.*?</del>', re.S)
 TAG = re.compile(r"<[^>]+>")
 PRECACHE = re.compile(r"const PRECACHE = \[(.*?)\];", re.S)
+SW_VERSION = 'const VERSION = "dev";'  # CI 部署时把 dev 换成提交号
 # 不进离线缓存的文件：service worker 自己，以及只给 Cloudflare 读的跳转规则
 NOT_PRECACHED = {"sw.js", "_redirects"}
 PWA_HEAD = ["manifest.webmanifest", "assets/js/sw-register.js"]
@@ -191,15 +192,18 @@ def check_site(site):
             if term in plain:
                 err(f"出现非官方译名「{term}」：{why}")
     if pwa:
-        errors += check_precache(site) + check_manifest(site)
+        errors += check_service_worker(site) + check_manifest(site)
     if (site / "_redirects").exists():
         errors += check_redirects(site)
     return errors
 
 
-def check_precache(site):
-    """sw.js 的 PRECACHE 要和 site/ 下的文件一一对应，否则新页面离线时打不开。"""
-    m = PRECACHE.search((site / "sw.js").read_text(encoding="utf-8"))
+def check_service_worker(site):
+    """sw.js 要留着给 CI 替换的版本号；PRECACHE 要和 site/ 下的文件一一对应，否则新页面离线时打不开。"""
+    text = (site / "sw.js").read_text(encoding="utf-8")
+    if SW_VERSION not in text.splitlines():
+        return [f"sw.js: 要保留单独一行 {SW_VERSION}，CI 部署时靠它写入提交号"]
+    m = PRECACHE.search(text)
     if not m:
         return ["sw.js: 找不到 const PRECACHE = [...]"]
     listed = set(re.findall(r'"([^"]+)"', m.group(1)))
