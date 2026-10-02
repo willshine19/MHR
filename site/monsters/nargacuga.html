@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -69,6 +70,20 @@
   </div>
   <p><strong>属性：</strong>雷 35、火 25、龙 15、冰 10、水 5（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">落穴陷阱会被它破坏；它摆出蓄力架势时扔音爆弹能让它倒地，但起身后会进入发怒</td><td data-label="长枪">全部招式都能防，最高威力只有 60；尾巴砸地时等它跳起翻身后再防</td><td data-label="弓">打头部；弹肉质最高的是尾巴（45）</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">眼睛变红，红色一直延伸到耳朵</td><td data-label="变化">攻击 ×1.2、动作速度 ×1.2，持续 80 秒；尾巴砸地变两连（大师级第二下转约 90° 从侧面砸），尾刺射击变两轮；这时落穴陷阱才有效；尾巴斩 55（平常 46）、弹 40（平常 45）</td><td data-label="长枪">两连砸的第一下之后别反击；尾巴变得更好砍</td><td data-label="弓">尾巴的弹肉质降到 40，头部和尾巴尖是 42，全身没有弹 45 以上的部位；尾刺连射两轮，第一轮之后别停下</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 80 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">尾刺被打掉</td><td data-label="怎么判断">打尾巴累积伤害能把刺打掉</td><td data-label="变化">过一阵会做很长的重新装刺动作；装刺时扔音爆弹能让它倒地</td><td data-label="长枪">装刺动作是反击机会</td><td data-label="弓">打尾巴靠根部的位置（尾巴比尾巴尖软）</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -118,6 +133,9 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/260758">GameWith：迅龙攻略（2026-09-27 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/375482">Game8 JP：迅龙攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/322163">Game8：Nargacuga（2026-06-03 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/037_00.html">MHRice：迅龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%8A%E3%83%AB%E3%82%AC%E3%82%AF%E3%83%AB%E3%82%AC">モンハン大辞典 Wiki：ナルガクルガ（2026-09-18 更新）</a></li>
+      <li><a href="https://mhrise.com/data/4508.html">攻略レシピ：ナルガクルガ（发怒时的肉质）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/1047302063">Kiranico：迅龙（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>

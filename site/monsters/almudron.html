@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -69,6 +70,25 @@
   </div>
   <p><strong>属性：</strong>火 30、冰 25、雷 15、龙 15、水 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 120（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">撒出的泥是普通颜色</td><td data-label="变化">泥只会让人走不快</td><td data-label="长枪">尾巴攻击有明显的蓄势，可以防也可以躲</td><td data-label="弓">打头部和尾巴；别站太远，扑咬和泥浪都打得到远处</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">撒出的泥变成金色（官方介绍：兴奋时泥巴会完全呈现金色）</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.1，持续 90 秒；金色泥除了减速还会持续掉血</td><td data-label="长枪">别站在金色泥里</td><td data-label="弓">站位避开金色泥</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 80 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">尾巴挂大泥球</td><td data-label="怎么判断">原地转圈撒泥，尾巴尖聚起一个大泥球</td><td data-label="变化">尾巴攻击变强，多出跳起来砸泥球的招；大泥球的斩、弹肉质都是 100</td><td data-label="长枪">砸泥球蓄力很长，收刀扑地躲开；能防，但这是它威力最高的一招，防住后退最多</td><td data-label="弓">集中射大泥球，打坏能让它大倒地</td></tr>
+        <tr><td data-label="状态">半潜</td><td data-label="怎么判断">钻进泥或软地面，只露出头部、前肢和尾巴；放完泥迷宫后也会进入</td><td data-label="变化">攻击距离变短，主要用尾巴快速拍打；大师级会后退砸尾再从地面喷泥</td><td data-label="长枪">站在尾巴和前肢之间，头和尾巴都打得到；喷泥时从侧面绕开</td><td data-label="弓">打头部和尾巴累积伤害，可以把它打倒</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>大泥球打坏后它会大倒地；闪光球也能让泥球掉下来。</li>
+    <li>半潜靠累积伤害把它打倒来结束；没打倒的话，它会造漩涡把人吸向中心，再冲出来。</li>
+  </ul>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -117,6 +137,8 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/256660">GameWith：泥翁龙攻略（2026-09-25 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/371594">Game8 JP：泥翁龙攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/318579">Game8：Almudron（2026-06-04 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/095_00.html">MHRice：泥翁龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://monsterhunterrise.wiki.fextralife.com/Almudron">Fextralife：Almudron</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/2040569941">Kiranico：泥翁龙（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>

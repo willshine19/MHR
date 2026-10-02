@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -62,15 +63,38 @@
         <tr><td class="nowrap">后肢</td><td>38</td><td>20</td></tr>
         <tr><td class="nowrap">尾巴</td><td>43</td><td>10</td></tr>
         <tr><td class="nowrap">背部</td><td>30</td><td>15</td></tr>
-        <tr><td class="nowrap">臂刃</td><td>45</td><td><strong>45</strong></td></tr>
-        <tr><td class="nowrap">尾刃</td><td>45</td><td><strong>45</strong></td></tr>
-        <tr><td class="nowrap">前肢（缠鬼火时）</td><td>48</td><td><strong>45</strong></td></tr>
-        <tr><td class="nowrap">头部（缠鬼火时）</td><td><strong>60</strong></td><td><strong>45</strong></td></tr>
+        <tr><td class="nowrap">臂刃</td><td>45</td><td>45</td></tr>
+        <tr><td class="nowrap">尾刃</td><td>45</td><td>45</td></tr>
+        <tr><td class="nowrap">头部（缠鬼火时）</td><td>60</td><td>45</td></tr>
+        <tr><td class="nowrap">前肢、尾巴（缠鬼火时）</td><td>48</td><td>45</td></tr>
+        <tr><td class="nowrap">背部（缠鬼火时）</td><td><strong>63</strong></td><td><strong>50</strong></td></tr>
       </tbody>
     </table>
   </div>
   <p><strong>属性：</strong>水 25、雷 20、冰 10、火 0、龙 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 120（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">身上没有部位缠鬼火</td><td data-label="变化">弹肉质普遍偏硬，只有臂刃、尾刃是 45</td><td data-label="长枪">打头部（斩 55）</td><td data-label="弓">打臂刃、尾刃</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">背部甲壳和棘刺竖起</td><td data-label="变化">攻击 ×1.2、动作速度 ×1.1，持续 80 秒</td><td data-label="长枪">除了咬住挑飞后的爆炸，招式都能防</td><td data-label="弓">注意突进变快</td></tr>
+        <tr><td data-label="状态">前肢缠鬼火</td><td data-label="怎么判断">前肢冒出鬼火</td><td data-label="变化">拍爪变成两连并带爆炸；多出高速移动后突然尾刺；前肢斩 48、弹 45</td><td data-label="长枪">镜头锁定追住它；拍爪、尾刺都能防；打前肢</td><td data-label="弓">打前肢的鬼火</td></tr>
+        <tr><td data-label="状态">头部缠鬼火</td><td data-label="怎么判断">身体一抖，鬼火移到脸上、嘴边</td><td data-label="变化">多出连段：咬住 → 挑飞 → 嘴前大爆炸；头部斩 60、弹 45</td><td data-label="长枪">别停在它嘴前；被咬中就翔虫受身（那次爆炸挡不住）</td><td data-label="弓">被咬中同样翔虫受身；打脸上的鬼火</td></tr>
+        <tr><td data-label="状态">尾巴缠鬼火</td><td data-label="怎么判断">尾尖冒鬼火、打转</td><td data-label="变化">转尾后射直线光束，大师级连射两发</td><td data-label="长枪">光束能防但会被推远；光束后隙大，可以反击</td><td data-label="弓">横向躲光束；打尾巴的鬼火</td></tr>
+        <tr><td data-label="状态">背部缠鬼火（紫色）</td><td data-label="怎么判断">后腿站起撒粉尘引爆，之后背部冒紫火</td><td data-label="变化">只有打背部才能打出倒地；背部斩 63、弹 50，全身最软</td><td data-label="长枪">近战基本打不到背部，先打其他部位的鬼火</td><td data-label="弓">主打背部</td></tr>
+        <tr><td data-label="状态">鬼火变亮</td><td data-label="怎么判断">背部缠鬼火时再撒粉尘引爆，鬼火颜色变亮</td><td data-label="变化">攻击更凶；打任何缠鬼火的部位都能打出倒地；拖久了会放大招</td><td data-label="长枪">集中打缠鬼火的部位；大招能防但威力 100，攻略站建议收刀扑地回避</td><td data-label="弓">打任一缠鬼火的部位；看到大招前的咆哮就收刀扑地</td></tr>
+        <tr><td data-label="状态">鬼火被清掉</td><td data-label="怎么判断">缠鬼火的部位累积伤害后鬼火炸开</td><td data-label="变化">倒地，全身鬼火消失</td><td data-label="长枪">打头部</td><td data-label="弓">打臂刃、尾刃</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.85，持续 45 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>鬼火变亮后，要么靠特殊倒地结束，要么等它放完大招。</li>
+  </ul>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -119,6 +143,8 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/230246">GameWith：怨虎龙攻略（2026-10-01 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/364420">Game8 JP：怨虎龙攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/315451">Game8：Magnamalo（2026-06-03 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/089_00.html">MHRice：怨虎龙（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%83%9E%E3%82%AC%E3%82%A4%E3%83%9E%E3%82%AC%E3%83%89">モンハン大辞典 Wiki：マガイマガド（2026-09-27 更新）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/1921564947">Kiranico：怨虎龙（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>

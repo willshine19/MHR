@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -68,6 +69,24 @@
   </div>
   <p><strong>属性：</strong>火 35、雷 35、冰 20、水 10、龙 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常（爪折起）</td><td data-label="怎么判断">长爪折起来（官方介绍）</td><td data-label="变化">—</td><td data-label="长枪">站在背后也会挨半圈挥爪，用防御接；爪子下劈后后摇大，这时反击</td><td data-label="弓">打头部</td></tr>
+        <tr><td data-label="状态">发怒（爪伸开）</td><td data-label="怎么判断">长爪伸开（官方介绍）</td><td data-label="变化">爪子攻击范围变大；攻击 ×1.2、动作速度 ×1.15，持续 90 秒</td><td data-label="长枪">所有招式仍然都能普通防御</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 60 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+        <tr><td data-label="状态">背着会喷水的头骨</td><td data-label="怎么判断">背壳有螺贝和几种飞龙头骨，其中一种头骨会喷水（官方介绍）</td><td data-label="变化">多出从背壳喷水的招，能扫到远处；被打中会有水属性的属性异常</td><td data-label="长枪">喷水能防；离得近就贴到它侧面</td><td data-label="弓">站在远处最难躲，往侧面靠近</td></tr>
+        <tr><td data-label="状态">背壳被打坏</td><td data-label="怎么判断">背壳碎掉，背上露出软肉</td><td data-label="变化">露出的弱点斩 45、弹 35；没有背壳就不会喷水</td><td data-label="长枪">集中打露出的弱点</td><td data-label="弓">射露出的弱点</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>背壳打坏一段时间后，它会钻进地下换上新背壳；打击武器更容易打坏背壳。</li>
+  </ul>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -115,6 +134,8 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/296457">GameWith：将军镰蟹攻略（2026-06-05 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/405842">Game8 JP：将军镰蟹攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/343889">Game8：Shogun Ceanataur（2026-06-17 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/020_00.html">MHRice：将军镰蟹（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://monsterhunterrise.wiki.fextralife.com/Shogun+Ceanataur">Fextralife：Shogun Ceanataur</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/67000766">Kiranico：将军镰蟹（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>

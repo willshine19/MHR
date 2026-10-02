@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 每页顶部都有相同的手写导航（首页 / 配装 / 怪物 / 关于）。导航改动时，所有页面和 `scripts/check_site.py` 的 `NAV_TARGETS` 要一起改。
 - 内容页（`site/` 子目录下除 `index.html` 以外的页面）标题下必须有 `<p class="page-meta">`（进度 · Ver.16.0.2 · YYYY-MM-DD 核对），底部必须有 `<section class="sources">` 资料来源。
 - 新增或更新内容页后，同步更新首页的「当前进度」「当前配装」「全部页面」和 `site/builds/index.html`。
-- 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住。
+- 样式都在 `site/assets/css/site.css`，颜色用 `:root` 变量并带深色模式；宽表格用 `<div class="table-scroll"><table class="wide">` 包住；列多、每格是一两句话的表（如怪物的状态变化）用 `<table class="stack">`，每个 `<td>` 带 `data-label`，窄屏时每行显示成一张卡片。
 - 内容页在第一个 `<h2>` 前放 `<details class="toc">` 本页目录，依次链接到页面上的全部 h2（每个 h2 都要有语义 id，条目用短标题），`</main>` 前放 `<a class="to-top" href="#top">` 回到顶部。照抄现有配装页或怪物页的写法。
 - 离线缓存（PWA）：每页 `<head>` 在样式表后面都有同样的几行（theme-color、manifest、icon、apple-touch-icon、`sw-register.js`），新页面照抄同目录页面的 `<head>`。`site/` 下增删任何文件，都要同步改 `site/sw.js` 的 `PRECACHE`，否则新页面离线时打不开。
 - 页面改名或删除时，在 `site/_redirects` 里加一行「旧地址 新地址 301」（只对 Cloudflare 生效）。
@@ -89,7 +89,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 弓的蓄力段和瓶：灰色（`text-gray-400`）表示不可用或要「解放弓的蓄力阶段」才能用，绿色表示强化。
 - 锋利度是 SVG 色块，宽度 ×5 就是锋利度数值；第一条是基础值，第二条是匠 Lv5。
 - 武器的解锁进度（Unlock at）和派生关系 Kiranico 上没有，查 MHRice 的武器页。
-- 怪物肉质表的列依次是 斩、打、弹、火、水、**冰、雷**、龙、昏厥（冰在雷前面，容易读错）。「State」列只取 0（常态），另一组值代表什么状态 Kiranico 和 MHRice 都没说明。部分部位名是日文内部名（如怨虎龙的「J：腕鬼火」），要换算成中文或不列。
+- 怪物肉质表的列依次是 斩、打、弹、火、水、**冰、雷**、龙、昏厥（冰在雷前面，容易读错）。「State」列 0 是常态；1 代表什么状态 Kiranico 和 MHRice 都没说明，要靠攻略站的肉质表标注确认，确认不了就不用。已确认的：雪鬼兽、迅龙的 1 是发怒时，刚缠兽双臂的 1 是缠壳时。部分部位名是日文内部名（如怨虎龙的「J：腕鬼火」），要换算成中文或不列。
+- 发怒、疲劳的数值在 MHRice 怪物页的 Basic data：`State time`（发怒/疲劳持续秒数）、`Motion`（动作速度倍率）、`Attack`（发怒攻击倍率），和 GameWith 的「怒り・疲労」表一致，可以用。`Defense` 倍率是让怪物更硬还是更软、`Enrage threshold` 的单位都没核实，不要写进页面。
 - 怪物英文页（`/data/monsters/<id>`，不带 `/zh`）底部的招式表有 `GuardableType`：0 可防御，1 需要防御强化，2 防御强化也挡不住（与 MHRice 的 Yes / Needs Guard Up / No 一致）。长枪能不能挡以这列为准；同一页可能混有原种或怪异化个体的条目，威力为 0 的判定不算。
 - 任务列表里每个任务占 3 行（`rowspan="3"`），怪物图标 `icons/emXXX_YY.png` 包括目标和可能出现的其他大型怪物；em 编号和 MHRice 怪物页编号相同。
 
