@@ -95,3 +95,15 @@ h2[id] { scroll-margin-top: 12px; }
 .to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; box-shadow: 0 2px 8px rgb(0 0 0 / 0.15); color: var(--accent); font-size: 1.25rem; text-decoration: none; }
 
 .site-footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8125rem; padding: 16px 0 32px; }
+
+/* 列多、单元格文字长的表：窄屏时每一行变成一张卡片（td 需要 data-label） */
+@media (max-width: 600px) {
+  table.stack thead { display: none; }
+  table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100%; }
+  table.stack tr { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  table.stack tbody tr:last-child { border-bottom: 0; }
+  table.stack td, table.stack tbody tr:last-child td { border: 0; padding: 2px 0; }
+  table.stack td::before { content: attr(data-label) "："; font-weight: 600; color: var(--muted); }
+  table.stack td:first-child { font-weight: 700; color: var(--accent); padding-bottom: 4px; }
+  table.stack td:first-child::before { content: none; }
+}

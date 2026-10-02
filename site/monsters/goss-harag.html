@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -67,6 +68,26 @@
   </div>
   <p><strong>属性：</strong>火 30、雷 15、水 0、冰 0、龙 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 150、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">身体不红，前肢没有冰块</td><td data-label="变化">只用前肢、头、肩肉搏，攻击几乎都朝正面</td><td data-label="长枪">从侧面打前肢</td><td data-label="弓">打头部、前肢；背部和腿很硬</td></tr>
+        <tr><td data-label="状态">发怒（全身发红）</td><td data-label="怎么判断">咆哮的同时脸和四肢变红（官方介绍：兴奋时全身会发红）</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.11，持续 120 秒；头部斩 60、弹 55，前肢斩 60、弹 40，都比平常软；会拉开距离吐冰（先纵向再横扫），然后生成冰块</td><td data-label="长枪">吐冰也能防；横扫射程短，也可以拉开躲</td><td data-label="弓">打发红的头部、前肢；吐冰时退到横扫射程外</td></tr>
+        <tr><td data-label="状态">右臂刀、左臂拳（体力高时）</td><td data-label="怎么判断">右臂是刀状冰块，左臂是块状冰块</td><td data-label="变化">攻击距离和威力上升；冰块打中会有冰属性的属性异常</td><td data-label="长枪">刀砸地后插在地里是破绽；大师级会咆哮着拔刀横扫，等它上身完全抬起再打</td><td data-label="弓">打冰块，打碎任意一块它就倒地</td></tr>
+        <tr><td data-label="状态">两臂都是刀（体力低）</td><td data-label="怎么判断">两臂都变成刀状冰块</td><td data-label="变化">大师级会在成刀的同时高速前冲交叉斩，之后每次生成冰块都这样；这是它威力最高的招</td><td data-label="长枪">能防，但防住后退最多；要躲就大幅拉开或钻到正后方；先举左臂是两连砸，等右臂插地再打</td><td data-label="弓">前冲很快，离得稍远也会被追上</td></tr>
+        <tr><td data-label="状态">冰块被打碎</td><td data-label="怎么判断">打碎的瞬间倒地</td><td data-label="变化">还在发怒的话会重新生成冰块</td><td data-label="长枪">倒地是主要输出机会</td><td data-label="弓">同长枪</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.9，持续 90 秒</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>冰块要分两段才能打碎（Kiranico 部位数据里冰块有两级破坏）。</li>
+    <li>发怒结束前没打碎冰块，它会连续甩出冰片，然后冰块自己脱落，这段时间要一直移动。</li>
+  </ul>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -117,6 +138,9 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/250254">GameWith：雪鬼兽攻略（2025-07-10 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/367223">Game8 JP：雪鬼兽攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/316010">Game8：Goss Harag（2026-06-03 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/097_00.html">MHRice：雪鬼兽（发怒、疲劳数值，16.0.1）</a></li>
+      <li><a href="https://wikiwiki.jp/nenaiko/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/%E3%82%B4%E3%82%B7%E3%83%A3%E3%83%8F%E3%82%AE">モンハン大辞典 Wiki：ゴシャハギ（2026-09-08 更新）</a></li>
+      <li><a href="https://mhrise.com/data/4455.html">攻略レシピ：ゴシャハギ（发怒时的肉质）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/2069053547">Kiranico：雪鬼兽（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>

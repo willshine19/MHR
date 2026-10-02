@@ -38,6 +38,7 @@
     <ol>
       <li><a href="#guard">能不能挡</a></li>
       <li><a href="#weakness">弱点</a></li>
+      <li><a href="#states">状态变化</a></li>
       <li><a href="#danger">危险招式</a></li>
       <li><a href="#lance">长枪打法</a></li>
       <li><a href="#bow">弓打法</a></li>
@@ -69,6 +70,22 @@
   </div>
   <p><strong>属性：</strong>火 25、雷 15、水 0、冰 0、龙 0（各属性在最有效部位的值）。现在的长枪和弓都是无属性武器，这一行留作以后换武器参考。</p>
   <p><strong>异常状态初始耐性：</strong>毒 150、麻痹 180、睡眠 250、爆破 70（数值越低越容易累积，用弓的瓶时参考）。</p>
+
+  <h2 id="states">状态变化</h2>
+  <p>发怒、疲劳的攻击倍率、动作速度和持续时间来自拆包数据（MHRice）。手机上每种状态显示成一张卡片。</p>
+  <div class="table-scroll">
+    <table class="stack">
+      <thead><tr><th>状态</th><th>怎么判断</th><th>变化</th><th>长枪</th><th>弓</th></tr></thead>
+      <tbody>
+        <tr><td data-label="状态">平常</td><td data-label="怎么判断">—</td><td data-label="变化">肉质只有一组值，不随状态变化</td><td data-label="长枪">站侧面；颈部最软，其次头部、发鳍</td><td data-label="弓">打头部、发鳍</td></tr>
+        <tr><td data-label="状态">发怒</td><td data-label="怎么判断">没找到可靠的外观信号</td><td data-label="变化">攻击 ×1.1、动作速度 ×1.1，持续 100 秒</td><td data-label="长枪">打法同平常，只是节奏更快</td><td data-label="弓">同平常</td></tr>
+        <tr><td data-label="状态">疲劳</td><td data-label="怎么判断">—</td><td data-label="变化">动作速度 ×0.95，持续 60 秒（只慢一点）</td><td data-label="长枪">—</td><td data-label="弓">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li>没找到发怒和疲劳以外的特殊状态。</li>
+  </ul>
 
   <h2 id="danger">危险招式</h2>
   <ul>
@@ -114,6 +131,7 @@
       <li><a href="https://gamewith.jp/mhrize/article/show/343435">GameWith：冰人鱼龙攻略（2026-09-03 更新）</a></li>
       <li><a href="https://game8.jp/mhrise/454401">Game8 JP：冰人鱼龙攻略（2026-07-30 更新）</a></li>
       <li><a href="https://game8.co/games/Monster-Hunter-Rise/archives/377076">Game8：Aurora Somnacanth（2026-06-17 更新）</a></li>
+      <li><a href="https://mhrise.mhrice.info/monster/093_01.html">MHRice：冰人鱼龙（发怒、疲劳数值，16.0.1）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/monsters/88482199">Kiranico：冰人鱼龙（肉质、异常状态、招式能否防御）</a></li>
       <li><a href="https://mhrise.kiranico.com/zh/data/quests?view=hub_master">Kiranico：大师级集会所任务</a></li>
     </ul>
