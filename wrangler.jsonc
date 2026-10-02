@@ -5,6 +5,11 @@
   "account_id": "614bc4d343df9a0fb75658e97e16387c",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./site"
+    "directory": "./site",
+    // 按原路径返回 xxx.html，不跳转到不带后缀的地址，和 GitHub Pages、本地预览一致，
+    // 离线缓存的地址也不会对不上。根目录 / 由 site/_redirects 补上
+    "html_handling": "none",
+    // 找不到的地址返回 site/404.html（状态码 404）
+    "not_found_handling": "404-page"
   }
 }

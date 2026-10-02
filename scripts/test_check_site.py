@@ -23,7 +23,14 @@ def page(nav_prefix, body):
 
 CONTENT_BODY = """<h1 id="top">配装</h1>
 <p class="page-meta">MR 2★ · Ver.16.0.2（Kiranico v16.0.0）· 2026-09-30 核对</p>
-<section class="sources"><h2>资料来源</h2><ul><li><a href="https://mhrise.kiranico.com/zh">Kiranico</a></li></ul></section>"""
+<details class="toc"><summary>本页目录</summary><ol><li><a href="#skills">技能</a></li><li><a href="#sources">资料来源</a></li></ol></details>
+<h2 id="skills">技能优先级</h2>
+<section class="sources"><h2 id="sources">资料来源</h2><ul><li><a href="https://mhrise.kiranico.com/zh">Kiranico</a></li></ul></section>"""
+
+# 离线缓存用的 head 标签，路径相对站点根目录
+PWA_HEAD = """<link rel="manifest" href="{p}manifest.webmanifest">
+<script src="{p}assets/js/sw-register.js" defer></script>
+"""
 
 
 class CheckSiteTest(unittest.TestCase):
@@ -43,6 +50,22 @@ class CheckSiteTest(unittest.TestCase):
 
     def write(self, rel, text):
         (self.site / rel).write_text(text, encoding="utf-8")
+
+    def enable_pwa(self, skip_head=(), precache=None):
+        """给测试站点加上离线缓存：每页补 head 标签，sw.js 的 PRECACHE 默认列出全部文件。"""
+        (self.site / "assets/js").mkdir(parents=True)
+        (self.site / "assets/icons").mkdir()
+        self.write("assets/js/sw-register.js", "")
+        self.write("assets/icons/icon.png", "")
+        self.write("manifest.webmanifest", '{"start_url": "index.html", "icons": [{"src": "assets/icons/icon.png"}]}')
+        for page in self.site.rglob("*.html"):
+            rel = page.relative_to(self.site).as_posix()
+            if rel not in skip_head:
+                head = PWA_HEAD.format(p="../" * rel.count("/"))
+                page.write_text(page.read_text(encoding="utf-8").replace("</head>", head + "</head>"), encoding="utf-8")
+        if precache is None:
+            precache = sorted(p.relative_to(self.site).as_posix() for p in self.site.rglob("*") if p.is_file())
+        self.write("sw.js", "const PRECACHE = [\n" + "".join(f'  "{f}",\n' for f in precache) + "];\n")
 
     def assertError(self, keyword):
         errors = check_site(self.site)
@@ -83,6 +106,58 @@ class CheckSiteTest(unittest.TestCase):
     def test_section_index_is_not_content_page(self):
         self.write("builds/index.html", page("../", "<h1>配装</h1>"))
         self.assertEqual(check_site(self.site), [])
+
+    def test_top_fragment_needs_no_element(self):
+        self.write("about.html", page("", '<a href="builds/index.html#top">回到顶部</a>'))
+        self.assertEqual(check_site(self.site), [])
+
+    def test_content_page_requires_toc(self):
+        body = CONTENT_BODY.replace('<details class="toc">', "<div>").replace("</details>", "</div>")
+        self.write("builds/lance-mr2.html", page("../", body))
+        self.assertError("本页目录")
+
+    def test_toc_must_list_every_h2(self):
+        self.write("builds/lance-mr2.html", page("../", CONTENT_BODY + '<h2 id="weapons">武器</h2>'))
+        self.assertError("本页目录应依次链接到全部 h2")
+
+    def test_content_h2_requires_id(self):
+        self.write("builds/lance-mr2.html", page("../", CONTENT_BODY + "<h2>武器</h2>"))
+        self.assertError("<h2> 都要有 id")
+
+    def test_pwa_site_passes(self):
+        self.enable_pwa()
+        self.assertEqual(check_site(self.site), [])
+
+    def test_pwa_page_requires_head_tags(self):
+        self.enable_pwa(skip_head={"about.html"})
+        self.assertError("about.html: <head> 缺少离线缓存")
+
+    def test_precache_must_list_new_file(self):
+        self.enable_pwa(precache=["index.html"])
+        self.assertError("PRECACHE 缺少 builds/lance-mr2.html")
+
+    def test_precache_rejects_missing_file(self):
+        self.enable_pwa()
+        (self.site / "builds/lance-mr2.html").unlink()
+        self.write("builds/index.html", page("../", "<h1>配装</h1>"))
+        self.assertError("PRECACHE 里的 builds/lance-mr2.html 不存在")
+
+    def test_manifest_icon_must_exist(self):
+        self.enable_pwa()
+        (self.site / "assets/icons/icon.png").unlink()
+        self.assertError("manifest.webmanifest: 文件不存在：assets/icons/icon.png")
+
+    def test_redirects_valid(self):
+        self.write("_redirects", "# 注释\n/ /index.html 200\n/:dir/ /:dir/index.html 200\n/builds/mr2.html /builds/lance-mr2.html 301\n")
+        self.assertEqual(check_site(self.site), [])
+
+    def test_redirect_target_must_exist(self):
+        self.write("_redirects", "/builds/mr2.html /builds/mr9.html 301\n")
+        self.assertError("目标不存在：/builds/mr9.html")
+
+    def test_redirect_source_must_not_be_existing_page(self):
+        self.write("_redirects", "/about.html /index.html 301\n")
+        self.assertError("来源 /about.html 是现有文件")
 
     def test_content_page_requires_meta(self):
         self.write("builds/lance-mr2.html", page("../", CONTENT_BODY.replace("2026-09-30 核对", "")))
