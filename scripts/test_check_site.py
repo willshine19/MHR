@@ -65,7 +65,7 @@ class CheckSiteTest(unittest.TestCase):
                 page.write_text(page.read_text(encoding="utf-8").replace("</head>", head + "</head>"), encoding="utf-8")
         if precache is None:
             precache = sorted(p.relative_to(self.site).as_posix() for p in self.site.rglob("*") if p.is_file())
-        self.write("sw.js", "const PRECACHE = [\n" + "".join(f'  "{f}",\n' for f in precache) + "];\n")
+        self.write("sw.js", 'const VERSION = "dev";\nconst PRECACHE = [\n' + "".join(f'  "{f}",\n' for f in precache) + "];\n")
 
     def assertError(self, keyword):
         errors = check_site(self.site)
@@ -141,6 +141,12 @@ class CheckSiteTest(unittest.TestCase):
         (self.site / "builds/lance-mr2.html").unlink()
         self.write("builds/index.html", page("../", "<h1>配装</h1>"))
         self.assertError("PRECACHE 里的 builds/lance-mr2.html 不存在")
+
+    def test_sw_version_placeholder_required(self):
+        self.enable_pwa()
+        sw = self.site / "sw.js"
+        sw.write_text(sw.read_text(encoding="utf-8").replace('"dev"', '"abc1234"'), encoding="utf-8")
+        self.assertError('要保留单独一行 const VERSION = "dev";')
 
     def test_manifest_icon_must_exist(self):
         self.enable_pwa()
