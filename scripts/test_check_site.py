@@ -165,6 +165,48 @@ class CheckSiteTest(unittest.TestCase):
         self.write("_redirects", "/about.html /index.html 301\n")
         self.assertError("来源 /about.html 是现有文件")
 
+    def add_monster(self, slug="rathalos", icon=None, card=None):
+        """加一个怪物页和它的图标，列表页放一张链接到它的卡片。"""
+        (self.site / "assets/img/monsters").mkdir(parents=True, exist_ok=True)
+        self.write(f"assets/img/monsters/{slug}.webp", "")
+        if icon is None:
+            icon = f'<img class="monster-icon" src="../assets/img/monsters/{slug}.webp" alt="火龙的游戏内图标" width="192" height="192">'
+        if card is None:
+            card = (f'<a class="card monster-card" href="{slug}.html">'
+                    f'<img class="card-icon" src="../assets/img/monsters/{slug}.webp" alt="" width="192" height="192">'
+                    f'<span><strong>火龙</strong></span></a>')
+        self.write(f"monsters/{slug}.html", page("../", CONTENT_BODY.replace('<details', f'<p class="lead">{icon}介绍</p><details')))
+        self.write("monsters/index.html", page("../", f"<h1>怪物</h1>{card}"))
+
+    def test_monster_with_icons_passes(self):
+        self.add_monster()
+        self.assertEqual(check_site(self.site), [])
+
+    def test_monster_page_requires_icon(self):
+        self.add_monster(icon="")
+        self.assertError('monsters/rathalos.html: 怪物页缺少 <img class="monster-icon">')
+
+    def test_monster_icon_must_match_page(self):
+        self.add_monster("tigrex")
+        self.add_monster(icon='<img class="monster-icon" src="../assets/img/monsters/tigrex.webp" alt="火龙的游戏内图标" width="192" height="192">')
+        self.assertError("monsters/rathalos.html: 怪物图标应为 assets/img/monsters/rathalos.webp")
+
+    def test_monster_icon_requires_alt_text(self):
+        self.add_monster(icon='<img class="monster-icon" src="../assets/img/monsters/rathalos.webp" alt="" width="192" height="192">')
+        self.assertError("怪物图标的 alt 要写明是哪只怪物")
+
+    def test_monster_card_requires_icon(self):
+        self.add_monster(card='<a class="card" href="rathalos.html"><strong>火龙</strong></a>')
+        self.assertError("monsters/index.html: 链接到 rathalos.html 的卡片缺少图标 assets/img/monsters/rathalos.webp")
+
+    def test_img_requires_size(self):
+        self.write("about.html", page("", '<img src="index.html" alt="">'))
+        self.assertError("<img> 要写 width 和 height")
+
+    def test_img_requires_alt(self):
+        self.write("about.html", page("", '<img src="index.html" width="1" height="1">'))
+        self.assertError("<img> 要写 alt")
+
     def test_content_page_requires_meta(self):
         self.write("builds/lance-mr2.html", page("../", CONTENT_BODY.replace("2026-09-30 核对", "")))
         self.assertError("page-meta")
